@@ -60,6 +60,7 @@ def clean(session: nox.Session) -> None:
         'docs/generated',
         '.nox',
         '.ruff_cache',
+        'pdm.lock',
     ]
     for path in paths:
         shutil.rmtree(path, ignore_errors=True)

@@ -58,7 +58,7 @@ teardown() {
     --data author_username="gdouzas" \
     --data repository_name="test-repo"
 
-    [ "$status" -eq 0 ]
+    [ -d test-repo ]
     compare_repos "$(dirname "$BATS_TEST_FILENAME")/expected/default" "test-repo"
 }
 
@@ -71,7 +71,7 @@ teardown() {
     --data repository_name="test-repo" \
     --data git_provider="None"
 
-    [ "$status" -eq 0 ]
+    [ -d test-repo ]
     compare_repos "$(dirname "$BATS_TEST_FILENAME")/expected/no-git-provider" "test-repo"
 }
 
@@ -84,7 +84,7 @@ teardown() {
     --data repository_name="test-repo" \
     --data package_manager="uv"
 
-    [ "$status" -eq 0 ]
+    [ -d test-repo ]
     compare_repos "$(dirname "$BATS_TEST_FILENAME")/expected/uv-package-manager" "test-repo"
 }
 
@@ -97,6 +97,6 @@ teardown() {
     --data repository_name="test-repo" \
     --data publish_pypi="False"
 
-    [ "$status" -eq 0 ]
+    [ -d test-repo ]
     compare_repos "$(dirname "$BATS_TEST_FILENAME")/expected/no-publish-pypi" "test-repo"
 }

@@ -77,6 +77,11 @@ def clean(session: nox.Session) -> None:
         'docs/generated',
         '.nox',
         '.ruff_cache',
+        {%- if package_manager == "PDM" %}
+        'pdm.lock',
+        {%- elif package_manager == "uv" %}
+        'uv.lock',
+        {%- endif %}
     ]
     for path in paths:
         shutil.rmtree(path, ignore_errors=True)
@@ -303,4 +308,4 @@ def release(session: nox.Session) -> None:
     # Build and upload artifacts
     session.run('uv', 'build', external=True)
     session.run('twine', 'upload', '--skip-existing', 'dist/*')
-{% endif %}
+{% endif -%}

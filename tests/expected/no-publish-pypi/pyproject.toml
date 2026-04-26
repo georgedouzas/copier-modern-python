@@ -41,11 +41,7 @@ version = {source = "scm"}
 build = {package-dir = "src", editable-backend = "editables"}
 
 [tool.pdm.scripts]
-clean = {shell = """rm -rf .mypy_cache .pytest_cache tests/.pytest_cache build dist \
-htmlcov pip-wheel-metadata site __pycache__ docs/generated .nox .ruff_cache pdm.lock \
-&& find . -type d -name __pycache__ | xargs rm -rf \
-&& find . -name '*.rej'  -delete \
-&& find . -name '.coverage*'  -delete"""}
+clean = "nox --error-on-external-run -R -s clean"
 docs = "nox --error-on-external-run -R -s docs -- {args:serve}"
 formatting = "nox --error-on-external-run -R -s formatting -- {args:all}"
 checks = "nox --default-venv-backend uv --error-on-external-run -R -s checks -- {args:all}"
