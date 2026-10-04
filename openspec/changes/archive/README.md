@@ -6,5 +6,6 @@ stories and functional requirements, `plan.md`, `research.md`, `tasks.md`, and p
 `checklists/` and `contracts/`, rather than OpenSpec's proposal, design, specs delta, and tasks
 shapes. The current-truth requirements they established live in `openspec/specs/`:
 `project-layouts`, `repo-python-gate`, and `fixture-docs-gate`. The one piece of
-`2026-10-04-fixture-docs-build` that never shipped, the properdocs single-tool swap, lives on as
-the active change `properdocs-single-tool`.
+`2026-10-04-fixture-docs-build` that never shipped, the properdocs single-tool dependency swap,
+was dropped on 2026-10-04: the owner settled its scope as branding only, properdocs already
+builds the generated docs, and the README badge now names it, so no dependency change remained.
