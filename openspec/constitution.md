@@ -346,7 +346,7 @@ This section instantiates the body above for this repository.
   of file, YAML validity, and the conventional commit convention.
 - Generated projects: they target Python `>=3.11, <3.14`, use PDM or uv, and carry the quality floor of
   `ruff`, `mypy`, `bandit`, `pip-audit`, `deptry`, `pydoclint`, and `interrogate`. The template also
-  offers an AGENTS.md and a Spec Kit constitution for AI coding agents, and seeds the latter from this
-  same engineering body.
+  ships a spec-driven workflow tool, OpenSpec by default with Spec Kit as the alternative, each seeding
+  the same engineering constitution from one template partial.
 
-**Version**: 2.0.1 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-08-02
+**Version**: 2.0.2 | **Ratified**: 2026-07-24 | **Last Amended**: 2026-10-04
