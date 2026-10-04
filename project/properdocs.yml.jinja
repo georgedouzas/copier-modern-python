@@ -5,17 +5,21 @@
 {%- set docs_url = "https://" ~ namespace_path ~ ".github.io/" ~ repo_path -%}
 {%- set repo_url = "https://github.com/" ~ namespace_path ~ "/" ~ repo_path -%}
 {%- set author_url = "https://github.com/" ~ username_path -%}
+{%- set social_icon = "fontawesome/brands/github" -%}
 {%- elif git_provider == "GitLab" -%}
 {%- set docs_url = "https://" ~ namespace_path ~ ".gitlab.io/" ~ repo_path -%}
 {%- set repo_url = "https://gitlab.com/" ~ namespace_path ~ "/" ~ repo_path -%}
 {%- set author_url = "https://gitlab.com/" ~ username_path -%}
+{%- set social_icon = "fontawesome/brands/gitlab" -%}
 {%- elif git_provider == "Azure DevOps" -%}
 {%- set project_path = azure_devops_project | urlencode -%}
 {%- set repo_url = "https://dev.azure.com/" ~ namespace_path ~ "/" ~ project_path ~ "/_git/" ~ repo_path -%}
 {%- set author_url = "https://dev.azure.com/" ~ username_path -%}
+{%- set social_icon = "material/microsoft-azure-devops" -%}
 {%- elif git_provider == "Bitbucket" -%}
 {%- set repo_url = "https://bitbucket.org/" ~ namespace_path ~ "/" ~ repo_path -%}
 {%- set author_url = "https://bitbucket.org/" ~ username_path -%}
+{%- set social_icon = "fontawesome/brands/bitbucket" -%}
 {%- endif -%}
 site_name: "{{ repository_name }}"
 site_description: "{{ project_description }}"
@@ -111,6 +115,6 @@ plugins:
 
 extra:
   social:
-  - icon: fontawesome/brands/{{ git_provider|lower|replace(' ', '-') }}
+  - icon: {{ social_icon }}
     link: {{ author_url }}
 {%- endif %}

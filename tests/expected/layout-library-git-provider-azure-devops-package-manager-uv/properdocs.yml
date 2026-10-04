@@ -73,5 +73,5 @@ plugins:
 
 extra:
   social:
-  - icon: fontawesome/brands/azure-devops
+  - icon: material/microsoft-azure-devops
     link: https://dev.azure.com/gdouzas
