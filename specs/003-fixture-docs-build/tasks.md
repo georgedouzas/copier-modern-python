@@ -138,7 +138,7 @@ badges, and run `make tests`.
 
 ### Implementation for User Story 4
 
-- [ ] T016 [US4] Confirm on PyPI that a properdocs release carries the documentation stack
+- [X] T016 [US4] Confirm on PyPI that a properdocs release carries the documentation stack
       (theme, mkdocstrings, gen-files, literate-nav, section-index, gallery, coverage, callouts,
       markdown-exec, jupyter) as dependencies or an extra, record the version and whether jupyter
       is included, and stop this phase if no such release exists
