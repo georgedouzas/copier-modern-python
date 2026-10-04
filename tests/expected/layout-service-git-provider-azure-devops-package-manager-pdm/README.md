@@ -6,8 +6,8 @@
 [ruff]: <https://github.com/charliermarsh/ruff>
 [mypy badge]: <http://www.mypy-lang.org/static/mypy_badge.svg>
 [mypy]: <http://mypy-lang.org>
-[mkdocs badge]: <https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat>
-[mkdocs]: <https://squidfunk.github.io/mkdocs-material>
+[properdocs badge]: <https://img.shields.io/badge/docs-properdocs-blue.svg?style=flat>
+[properdocs]: <https://properdocs.org>
 [pip-audit badge]: <https://img.shields.io/badge/security-pip--audit-green>
 [pip-audit]: <https://github.com/pypa/pip-audit>
 [bandit badge]: <https://img.shields.io/badge/security-bandit-yellow>
@@ -37,7 +37,7 @@
 | **Security**      | [![pip-audit][pip-audit badge]][pip-audit] [![bandit][bandit badge]][bandit] |
 | **Automation**    | [![nox][nox badge]][nox] [![pre-commit][pre-commit badge]][pre-commit] |
 | **Package**       |  ![pythonversion][pythonversion badge] |
-| **Documentation** | [![mkdocs][mkdocs badge]][mkdocs]|
+| **Documentation** | [![properdocs][properdocs badge]][properdocs]|
 
 ## Introduction
 
