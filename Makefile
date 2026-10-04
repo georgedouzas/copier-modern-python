@@ -17,6 +17,7 @@ checks:
 tests: checks
 	@bats tests/test_copier.bats
 	@$(PYTHON) scripts/check_pipelines.py
+	@$(PYTHON) scripts/check_docs.py
 
 tests-integration:
 	@bats tests/test_integration.bats

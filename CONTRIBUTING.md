@@ -35,6 +35,14 @@ checker deliberately excludes GitHub Actions `${{ ... }}` expression syntax from
 unrendered-construct scan, because the templates emit it on purpose; the negative lookbehind in
 the pattern is what keeps a real expression from being flagged as leftover Jinja.
 
+`make tests` finishes with `scripts/check_docs.py`, which builds every fixture's documentation
+with `properdocs build --strict` in one shared environment that uv provisions from the docs
+dependency groups the fixtures themselves declare. A render can pass the golden diff while the
+docs it describes no longer build, and strict mode turns the quiet failures, such as a
+navigation entry pointing at a page that does not exist, into hard ones. The first run needs the
+network to install the docs toolchain; later runs reuse uv's cache. Fixtures whose docs inputs
+are byte-identical are built once and reported as covered by the fixture that built.
+
 ## Adding a project layout
 
 A layout is a kind of project the generator can produce. Adding one is deliberately confined to
