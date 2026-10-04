@@ -60,8 +60,8 @@ def build_fixtures() -> dict[str, dict[str, str]]:
     defaults = {'project_layout': 'library', 'git_provider': 'GitHub', 'package_manager': 'PDM'}
     fixtures[f'{base}-publish-pypi-disabled'] = {**defaults, 'publish_pypi': 'False'}
     fixtures[f'{base}-license-none'] = {**defaults, 'copyright_license': 'None'}
-    fixtures[f'{base}-agents-md-disabled'] = {**defaults, 'include_agents_md': 'False'}
-    fixtures[f'{base}-speckit-enabled'] = {**defaults, 'include_speckit': 'True'}
+    fixtures[f'{base}-spec-tool-speckit'] = {**defaults, 'spec_tool': 'speckit'}
+    fixtures[f'{base}-spec-tool-none'] = {**defaults, 'spec_tool': 'none'}
     return fixtures
 
 

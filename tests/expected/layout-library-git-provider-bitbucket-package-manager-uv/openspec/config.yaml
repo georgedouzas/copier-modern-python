@@ -1,0 +1,6 @@
+schema: spec-driven
+
+context: |
+  The engineering constitution in openspec/constitution.md binds all work in this project. Read
+  it before planning a change, follow its code conventions in every artifact and task, and keep
+  the Project Profile at its end current as the project develops.

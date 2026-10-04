@@ -43,8 +43,8 @@ fixture_data() {
     printf -- '--data\npackage_manager=%s\n' "$(manager_value "$manager")"
     [[ "$name" == *-publish-pypi-disabled ]] && printf -- '--data\npublish_pypi=False\n'
     [[ "$name" == *-license-none ]] && printf -- '--data\ncopyright_license=None\n'
-    [[ "$name" == *-agents-md-disabled ]] && printf -- '--data\ninclude_agents_md=False\n'
-    [[ "$name" == *-speckit-enabled ]] && printf -- '--data\ninclude_speckit=True\n'
+    [[ "$name" == *-spec-tool-speckit ]] && printf -- '--data\nspec_tool=speckit\n'
+    [[ "$name" == *-spec-tool-none ]] && printf -- '--data\nspec_tool=none\n'
 }
 
 setup() {

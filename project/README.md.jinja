@@ -136,3 +136,17 @@ uvicorn {{ python_package_import_name }}.app:app --reload
 
 Then `GET /health`, or read the generated OpenAPI documentation at `/docs`.
 {% endif -%}
+{% if spec_tool == "openspec" %}
+## Spec-driven development
+
+The project's engineering constitution lives in `openspec/constitution.md` and binds all work. The
+project uses [OpenSpec](https://github.com/Fission-AI/OpenSpec) for spec-driven development: run
+`openspec init` once to add the workflow, and `openspec/config.yaml` already names the constitution
+as binding.
+{% elif spec_tool == "speckit" %}
+## Spec-driven development
+
+The project's engineering constitution lives in `.specify/memory/constitution.md` and binds all
+work. The project uses [Spec Kit](https://github.com/github/spec-kit) for spec-driven development:
+run `specify init` once to add the rest of the workflow alongside it.
+{% endif -%}

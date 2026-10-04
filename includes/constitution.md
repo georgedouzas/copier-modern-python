@@ -198,14 +198,3 @@ conventions are the taste it cannot check.
 - A deviation MUST be justified in the PR, and an unjustified violation MUST block merge.
 - Contributor-facing operational guidance MUST live alongside the code, in a `CONTRIBUTING.md` and developer docs,
   and MUST stay consistent with this constitution.
-
-## Project Profile
-
-The adopting repository instantiates the body here, and grows this section as the project develops.
-
-- **Contract**: the framework contract public objects conform to.
-- **Toolchain**: the supported language versions, the package manager, the task runner, and the tools the gate runs.
-- **Dependencies**: the runtime dependencies, each justified, and the optional extras that hold credentialled or
-  side-effecting capabilities.
-- **Delivery surfaces**: the surfaces the project exposes, and the surface packages that serve runners rather than
-  importers.

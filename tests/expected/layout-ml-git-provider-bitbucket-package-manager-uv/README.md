@@ -64,3 +64,10 @@ python -m test_repo.flow run
 
 Notebooks live in `notebooks/` and are executed by the test suite, so a notebook that stops
 working fails the build. Anything placed in `data/` stays out of version control.
+
+## Spec-driven development
+
+The project's engineering constitution lives in `openspec/constitution.md` and binds all work. The
+project uses [OpenSpec](https://github.com/Fission-AI/OpenSpec) for spec-driven development: run
+`openspec init` once to add the workflow, and `openspec/config.yaml` already names the constitution
+as binding.

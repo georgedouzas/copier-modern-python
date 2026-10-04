@@ -49,15 +49,15 @@ Layouts add only what a task actually exercises, and any framework they add runs
 provision. Changing a project's layout after generation is out of scope: the answer can be changed, but the result is whatever
 the update merge produces, and it is neither supported nor tested.
 
-### AI assistants
+### Spec-driven development
 
-Generated projects can carry conventions for AI coding agents, asked as two independent options. An **`AGENTS.md`** (the
-agent-agnostic standard that Claude Code, Cursor and others read directly) is seeded from what the project enforces: the
-task interface with the correct commands for the chosen package manager, the quality floor and the rule not to weaken
-it, the commit convention, the release topology, and notes for the chosen layout. Separately, an opt-in **Spec Kit
-constitution** seeds the project's principles in [Spec Kit's](https://github.com/github/spec-kit) format; run
-`specify init` alongside it to add the rest of the workflow. The two are distinct — Spec Kit does not read `AGENTS.md` —
-so you can take either, both, or neither.
+Generated projects ship with a spec-driven workflow tool seeding their engineering constitution, asked as one
+question with three answers. The default is [OpenSpec](https://github.com/Fission-AI/OpenSpec), which lays down
+`openspec/constitution.md` and an `openspec/config.yaml` naming it as binding; run `openspec init` to add the rest of
+the workflow. The alternative is [Spec Kit](https://github.com/github/spec-kit), which lays down the same constitution
+as `.specify/memory/constitution.md`; run `specify init` alongside it. Answering None ships neither. Both tools seed
+the identical constitution, the repo-agnostic body of engineering rules ending in a Project Profile instantiated for
+the generated project, so the choice is about workflow tooling, never about which rules apply.
 
 ### Documentation
 
@@ -151,7 +151,7 @@ The template will prompt you for various configuration options including:
 - Author information
 - Package manager preference (PDM or uv)
 - Project layout (library, command line tool, machine learning, data engineering, or service)
-- Whether to include a Dockerfile, and conventions for AI coding agents (AGENTS.md, Spec Kit)
+- Whether to include a Dockerfile, and the spec-driven workflow tool (OpenSpec, Spec Kit, or None)
 - Git provider (GitHub, GitLab, Azure DevOps, Bitbucket, or None)
 - License selection
 - Python version requirements

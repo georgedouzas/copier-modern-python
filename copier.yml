@@ -97,15 +97,14 @@ include_dockerfile:
 
 # AI assistants
 
-include_agents_md:
-  type: bool
-  help: Include an AGENTS.md describing the project's conventions for AI coding agents
-  default: true
-
-include_speckit:
-  type: bool
-  help: Include a Spec Kit constitution seeding the project's principles (run `specify init` to complete the setup)
-  default: false
+spec_tool:
+  type: str
+  help: The spec-driven workflow tool your project ships with, seeding its engineering constitution
+  default: openspec
+  choices:
+    "OpenSpec, AI-native spec-driven development (run `openspec init` to complete the setup)": openspec
+    "Spec Kit, GitHub's spec-driven development kit (run `specify init` to complete the setup)": speckit
+    "None": none
 
 # Distribution
 
