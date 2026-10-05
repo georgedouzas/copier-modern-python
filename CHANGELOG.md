@@ -6,6 +6,41 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.0.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.0) - 2026-10-05
+
+<small>[Compare with 1.12.0](https://github.com/georgedouzas/copier-modern-python/compare/1.12.0...2.0.0)</small>
+
+### Features
+
+- Ship a spec tool seeding the constitution, OpenSpec by default ([d50b73f](https://github.com/georgedouzas/copier-modern-python/commit/d50b73fc024a10269b6082b583172afcbe51e765) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Gate the fixtures' docs builds in the test suite ([69e26ba](https://github.com/georgedouzas/copier-modern-python/commit/69e26ba0a5c7eb868404d570027632f8eb40f81a) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+### Bug Fixes
+
+- Make the generated docs badge name properdocs ([0038d84](https://github.com/georgedouzas/copier-modern-python/commit/0038d844edcd09f7ef8070919c883be8cbc5cd67) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Use an Azure DevOps social icon that exists ([db70ab7](https://github.com/georgedouzas/copier-modern-python/commit/db70ab7bcc636d8d322582c423f6099179192cba) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+### Docs
+
+- Drop the properdocs single-tool change as branding only ([7796a67](https://github.com/georgedouzas/copier-modern-python/commit/7796a6719b88b413503b253573128098ab79da2d) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Sync and archive the ship-spec-tooling change ([b7c8663](https://github.com/georgedouzas/copier-modern-python/commit/b7c86636765bb543e491664786fb3529dc64c718) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Drop the spec tool sentence from the constitution profile ([3d218aa](https://github.com/georgedouzas/copier-modern-python/commit/3d218aa7e6a78d826e8c69e3b2f15287693ae2f3) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Plan shipping a spec tool and amend the constitution profile ([2975498](https://github.com/georgedouzas/copier-modern-python/commit/29754986a7794f6bffa0dc0f89dbe0ac040f077b) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Record task progress for the docs build gate ([dbd55c6](https://github.com/georgedouzas/copier-modern-python/commit/dbd55c671fb0755271914f32deb790353e824081) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Specify, plan, and task the fixture docs build gate ([1c6ed50](https://github.com/georgedouzas/copier-modern-python/commit/1c6ed50163341495ed62b9548184d6dcea5f0dd0) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+### Tests
+
+- Align the suite logging under the bats result lines ([a9733a2](https://github.com/georgedouzas/copier-modern-python/commit/a9733a2727f0dd67f101525b18888416122c87b7) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Drop the setup banner the pretty formatter made redundant ([e67256f](https://github.com/georgedouzas/copier-modern-python/commit/e67256f729bc0770fe6b5aeb04ffa3dc406ff53a) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Replace the TAP plan line with bats pretty output ([61d5693](https://github.com/georgedouzas/copier-modern-python/commit/61d5693a2374c93e349010a0b9d5ec23127cefd1) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Log each case as the suites run and end with a final state ([023b681](https://github.com/georgedouzas/copier-modern-python/commit/023b6816e414ed1a3a8a585e4b0dec8ab8f55f7b) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+### Chore
+
+- Remove explanatory comments and trim contributor docs ([2a4cd05](https://github.com/georgedouzas/copier-modern-python/commit/2a4cd05a3910e2786f0a73d75ed50d482873b1b0) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+- Migrate from Spec Kit to OpenSpec ([08bf95b](https://github.com/georgedouzas/copier-modern-python/commit/08bf95b18ed2c14cffcb44e6321d16d3fd22c6bf) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
 ## [1.12.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/1.12.0) - 2026-08-02
 
 <small>[Compare with 1.11.1](https://github.com/georgedouzas/copier-modern-python/compare/1.11.1...1.12.0)</small>
@@ -17,6 +52,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Docs
 
+- Update changelog for version 1.12.0 ([43bfe62](https://github.com/georgedouzas/copier-modern-python/commit/43bfe62519ca196f07c14eca83097e09fe9bd906) by georgedouzas).
 - Break the repo-gate work into tasks ([ac32077](https://github.com/georgedouzas/copier-modern-python/commit/ac320771a9c1ab5ca00bc902a06877f66f046513) by georgedouzas).
 - Plan gating the repository's own Python ([1b00e8f](https://github.com/georgedouzas/copier-modern-python/commit/1b00e8fff45125cf697c5b6cd74551598e16a518) by georgedouzas).
 - Specify gating the repository's own Python ([cc52521](https://github.com/georgedouzas/copier-modern-python/commit/cc52521853f12ba987713a2546bc592e14622580) by georgedouzas).
