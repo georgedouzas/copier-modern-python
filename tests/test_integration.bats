@@ -26,11 +26,12 @@ init_git() {
 
 # Log the command on the bats progress descriptor, then run it.
 step() {
-    echo "  run    $*" >&3
+    echo "      $ $*" >&3
     run "$@"
 }
 
 setup() {
+    echo >&3
     export TEST_DIR="$(mktemp -d)"
     export TEMPLATE_DIR="$(pwd)"
     cd "$TEST_DIR"

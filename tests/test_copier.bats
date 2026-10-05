@@ -78,17 +78,18 @@ teardown() {
             "${data[@]}" || true
 
         if [ ! -d "$out" ]; then
-            echo "  FAIL   ${name}: nothing rendered" >&3
+            echo "      fail  ${name}: nothing rendered" >&3
             failures=$((failures + 1))
             continue
         fi
         if ! diff -r --exclude=.copier-answers.yml "$dir" "$out"; then
-            echo "  FAIL   ${name}: rendered output differs from the fixture" >&3
+            echo "      fail  ${name}: rendered output differs from the fixture" >&3
             failures=$((failures + 1))
         else
-            echo "  ok     ${name}" >&3
+            echo "      ok    ${name}" >&3
         fi
     done
-    echo "golden: $((total - failures)) ok, ${failures} failed of ${total} fixtures" >&3
+    echo >&3
+    echo " golden fixtures: $((total - failures)) ok, ${failures} failed of ${total}" >&3
     [ "$failures" -eq 0 ]
 }
