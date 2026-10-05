@@ -1,6 +1,5 @@
 .PHONY: install docs checks tests tests-integration regen-fixtures changelog release
 
-# Override to use a specific interpreter, e.g. `make tests PYTHON=.venv/bin/python`.
 PYTHON ?= python3
 
 install:

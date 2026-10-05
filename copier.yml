@@ -8,13 +8,11 @@ _skip_if_exists:
 - CHANGELOG.md
 
 # Project
-
 project_description:
   type: str
   help: Your project description
 
 # Author
-
 author_fullname:
   type: str
   help: Your full name
@@ -24,7 +22,6 @@ author_email:
   help: Your email
 
 # Git hosting
-
 git_provider:
   type: str
   help: Your Git provider
@@ -59,7 +56,6 @@ azure_devops_project:
   default: "{{ repository_name }}"
 
 # Python
-
 python_versions:
   type: str
   help: The range of Python versions that your project supports
@@ -91,12 +87,9 @@ project_layout:
 include_dockerfile:
   type: bool
   help: Include a Dockerfile for building a container image
-  # Defaults on for the layouts that are deployed rather than installed, and off for the
-  # ones distributed as packages, where a container is something to delete rather than use.
   default: "{{ project_layout in ['dataeng', 'service'] }}"
 
 # AI assistants
-
 spec_tool:
   type: str
   help: The spec-driven workflow tool your project ships with, seeding its engineering constitution
@@ -107,12 +100,9 @@ spec_tool:
     "None": none
 
 # Distribution
-
 publish_pypi:
   type: bool
   help: Publish your project to PyPI
-  # Not asked when the layout produces nothing to publish. Asking and then ignoring the
-  # answer would be worse than not asking: the contradiction simply cannot arise this way.
   when: "{{ project_layout not in ['ml', 'dataeng', 'service'] }}"
   default: "{{ project_layout not in ['ml', 'dataeng', 'service'] }}"
 
@@ -128,7 +118,6 @@ python_package_import_name:
   default: "{{ repository_name|lower|replace('-', '_')|replace(' ', '_') }}"
 
 # Legal
-
 copyright_license:
   type: str
   help: Your project's license

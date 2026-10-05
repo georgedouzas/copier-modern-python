@@ -1,8 +1,3 @@
-# Configuration for the gate on the repository's own Python, the scripts under scripts/. There is no
-# [project] table because this repository is a Copier template, not a distributed package. The black,
-# ruff, and mypy settings are copied from the template's own project/pyproject.toml.jinja, so the
-# repository is checked by the same configuration it ships to a generated project.
-
 [tool.black]
 line-length = 120
 skip-string-normalization = true
@@ -20,9 +15,6 @@ select = ["C", "E", "F", "W", "B", "I", "D", "N", "UP", "YTT", "ANN", "S",
 "PTH", "PD", "PGH", "PL", "TRY", "RUF", "PLE", "PLR", "PLW"]
 
 [tool.ruff.lint.per-file-ignores]
-# The scripts are command-line tools, so their stdout is the interface (T20), a parsed YAML node is
-# genuinely of arbitrary shape (ANN401), and their subprocess calls run copier with arguments built
-# from this file's own constants, never external input (S603).
 "scripts/*" = ["T20", "ANN401", "S603"]
 
 [tool.ruff.lint.pydocstyle]
@@ -33,8 +25,6 @@ ignore_missing_imports = true
 warn_unused_ignores = true
 show_error_codes = true
 
-# The repository's own tooling dependencies, what `make install` installs. There is no [project]
-# table, so these live in a PEP 735 dependency group rather than under [project.dependencies].
 [dependency-groups]
 dev = [
     "copier>=9",

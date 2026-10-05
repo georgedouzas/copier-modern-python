@@ -42,22 +42,22 @@ Kedro ships telemetry as a core dependency, so the `dataeng` layout writes a `.t
 from a template never had the chance to consent, so consent is not assumed.
 
 Every layout carries the same quality floor: the same task names, the same checks at the same strictness, and the same release
-topology. Layouts differ in what they generate, never in whether that floor applies. The machine learning layout publishes
-nothing to a package index, so publishing is simply absent rather than generated and left broken.
+topology. Layouts differ in what they generate, never in whether that floor applies. The machine learning layout publishes nothing
+to a package index, so publishing is simply absent rather than generated and left broken.
 
-Layouts add only what a task actually exercises, and any framework they add runs locally with no account or server to
-provision. Changing a project's layout after generation is out of scope: the answer can be changed, but the result is whatever
-the update merge produces, and it is neither supported nor tested.
+Layouts add only what a task actually exercises, and any framework they add runs locally with no account or server to provision.
+Changing a project's layout after generation is out of scope: the answer can be changed, but the result is whatever the update
+merge produces, and it is neither supported nor tested.
 
 ### Spec-driven development
 
-Generated projects ship with a spec-driven workflow tool seeding their engineering constitution, asked as one
-question with three answers. The default is [OpenSpec](https://github.com/Fission-AI/OpenSpec), which lays down
-`openspec/constitution.md` and an `openspec/config.yaml` naming it as binding; run `openspec init` to add the rest of
-the workflow. The alternative is [Spec Kit](https://github.com/github/spec-kit), which lays down the same constitution
-as `.specify/memory/constitution.md`; run `specify init` alongside it. Answering None ships neither. Both tools seed
-the identical constitution, the repo-agnostic body of engineering rules ending in a Project Profile instantiated for
-the generated project, so the choice is about workflow tooling, never about which rules apply.
+Generated projects ship with a spec-driven workflow tool seeding their engineering constitution, asked as one question with three
+answers. The default is [OpenSpec](https://github.com/Fission-AI/OpenSpec), which lays down `openspec/constitution.md` and an
+`openspec/config.yaml` naming it as binding; run `openspec init` to add the rest of the workflow. The alternative is [Spec
+Kit](https://github.com/github/spec-kit), which lays down the same constitution as `.specify/memory/constitution.md`; run `specify
+init` alongside it. Answering None ships neither. Both tools seed the identical constitution, the repo-agnostic body of
+engineering rules ending in a Project Profile instantiated for the generated project, so the choice is about workflow tooling,
+never about which rules apply.
 
 ### Documentation
 
