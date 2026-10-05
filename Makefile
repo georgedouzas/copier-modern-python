@@ -17,9 +17,11 @@ tests: checks
 	@bats tests/test_copier.bats
 	@$(PYTHON) scripts/check_pipelines.py
 	@$(PYTHON) scripts/check_docs.py
+	@echo "tests OK: golden suite, pipeline check, and docs gate all passed"
 
 tests-integration:
 	@bats tests/test_integration.bats
+	@echo "tests-integration OK: every integration case passed"
 
 regen-fixtures:
 	@$(PYTHON) scripts/regen_fixtures.py

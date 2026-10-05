@@ -59,11 +59,12 @@ teardown() {
 }
 
 @test "Every fixture renders identically to its committed output" {
-    local failures=0
+    local failures=0 total=0
     for dir in "$EXPECTED_DIR"/*/; do
         local name out
         name="$(basename "$dir")"
         out="$TEST_DIR/$name"
+        total=$((total + 1))
 
         local data=()
         while IFS= read -r line; do data+=("$line"); done < <(fixture_data "$name")
@@ -77,14 +78,17 @@ teardown() {
             "${data[@]}" || true
 
         if [ ! -d "$out" ]; then
-            echo "FAIL ${name}: nothing rendered"
+            echo "  FAIL   ${name}: nothing rendered" >&3
             failures=$((failures + 1))
             continue
         fi
         if ! diff -r --exclude=.copier-answers.yml "$dir" "$out"; then
-            echo "FAIL ${name}: rendered output differs from the fixture"
+            echo "  FAIL   ${name}: rendered output differs from the fixture" >&3
             failures=$((failures + 1))
+        else
+            echo "  ok     ${name}" >&3
         fi
     done
+    echo "golden: $((total - failures)) ok, ${failures} failed of ${total} fixtures" >&3
     [ "$failures" -eq 0 ]
 }

@@ -24,7 +24,14 @@ init_git() {
     git tag 0.1.0
 }
 
+# Log the command on the bats progress descriptor, then run it.
+step() {
+    echo "  run    $*" >&3
+    run "$@"
+}
+
 setup() {
+    echo "== ${BATS_TEST_DESCRIPTION}" >&3
     export TEST_DIR="$(mktemp -d)"
     export TEMPLATE_DIR="$(pwd)"
     cd "$TEST_DIR"
@@ -42,13 +49,13 @@ teardown() {
     cd proj
     init_git
 
-    run pdm install
+    step pdm install
     [ "$status" -eq 0 ]
 
-    run pdm checks
+    step pdm checks
     [ "$status" -eq 0 ]
 
-    run pdm tests
+    step pdm tests
     [ "$status" -eq 0 ]
     [ -f coverage.xml ]
 }
@@ -60,13 +67,13 @@ teardown() {
     cd proj
     init_git
 
-    run uv sync
+    step uv sync
     [ "$status" -eq 0 ]
 
-    run uv run nox -s checks
+    step uv run nox -s checks
     [ "$status" -eq 0 ]
 
-    run uv run nox -s tests
+    step uv run nox -s tests
     [ "$status" -eq 0 ]
     [ -f coverage.xml ]
 }
@@ -79,16 +86,16 @@ teardown() {
     cd proj
     init_git
 
-    run pdm install
+    step pdm install
     [ "$status" -eq 0 ]
 
-    run pdm checks
+    step pdm checks
     [ "$status" -eq 0 ]
 
-    run pdm tests
+    step pdm tests
     [ "$status" -eq 0 ]
 
-    run pdm run test-repo --name layouts
+    step pdm run test-repo --name layouts
     [ "$status" -eq 0 ]
     [[ "$output" == *"Hello, layouts!"* ]]
 }
@@ -101,7 +108,7 @@ teardown() {
     cd proj
     init_git
 
-    run pdm install
+    step pdm install
     [ "$status" -eq 0 ]
 
     # pdm install writes the lock, which is committed. Capture it here, as a user would after a
@@ -110,15 +117,15 @@ teardown() {
     git add -A
     git -c user.email=test@test.com -c user.name=test commit -qm "lock"
 
-    run pdm checks
+    step pdm checks
     [ "$status" -eq 0 ]
 
     # Stripped of AWS configuration: Metaflow local mode must need no account or server.
-    run env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_PROFILE pdm tests
+    step env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_PROFILE pdm tests
     [ "$status" -eq 0 ]
 
     # Running the flow must not leave the project dirty.
-    run git status --porcelain
+    step git status --porcelain
     [ -z "$output" ]
 }
 
@@ -129,10 +136,10 @@ teardown() {
 
     echo "secret,data" > data/probe.csv
 
-    run git status --porcelain
+    step git status --porcelain
     [ -z "$output" ]
 
-    run git ls-files data/
+    step git ls-files data/
     [ -n "$output" ]
 }
 
@@ -144,18 +151,18 @@ teardown() {
     cd proj
     init_git
 
-    run pdm install
+    step pdm install
     [ "$status" -eq 0 ]
 
-    run pdm checks
+    step pdm checks
     [ "$status" -eq 0 ]
 
-    run pdm tests
+    step pdm tests
     [ "$status" -eq 0 ]
 
     # Kedro ships telemetry as a core dependency; a generated project must decline it rather
     # than inherit consent its owner never gave.
-    run grep -q "consent: false" .telemetry
+    step grep -q "consent: false" .telemetry
     [ "$status" -eq 0 ]
 
     # Deployed rather than distributed, so a container is the artifact.
@@ -170,13 +177,13 @@ teardown() {
     cd proj
     init_git
 
-    run pdm install
+    step pdm install
     [ "$status" -eq 0 ]
 
-    run pdm checks
+    step pdm checks
     [ "$status" -eq 0 ]
 
-    run pdm tests
+    step pdm tests
     [ "$status" -eq 0 ]
 
     [ -f Dockerfile ]
@@ -207,10 +214,10 @@ teardown() {
     # A generated Dockerfile is a claim that the project containerises. Build it rather than
     # check it exists: the version comes from the SCM tags, which needs git in the build
     # stage and the .git directory in the context, and only a real build proves both.
-    run docker build -t cmp-integration-test .
+    step docker build -t cmp-integration-test .
     [ "$status" -eq 0 ]
 
-    run docker run --rm cmp-integration-test python -c "import test_repo.app"
+    step docker run --rm cmp-integration-test python -c "import test_repo.app"
     [ "$status" -eq 0 ]
 
     docker rmi -f cmp-integration-test || true
