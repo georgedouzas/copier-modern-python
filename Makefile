@@ -14,13 +14,13 @@ checks:
 	@uvx --with types-PyYAML mypy scripts/
 
 tests: checks
-	@bats tests/test_copier.bats
+	@TERM=$${TERM:-dumb} bats --formatter pretty tests/test_copier.bats
 	@$(PYTHON) scripts/check_pipelines.py
 	@$(PYTHON) scripts/check_docs.py
 	@echo "tests OK: golden suite, pipeline check, and docs gate all passed"
 
 tests-integration:
-	@bats tests/test_integration.bats
+	@TERM=$${TERM:-dumb} bats --formatter pretty tests/test_integration.bats
 	@echo "tests-integration OK: every integration case passed"
 
 regen-fixtures:
