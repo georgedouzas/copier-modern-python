@@ -31,7 +31,6 @@ step() {
 }
 
 setup() {
-    echo "== ${BATS_TEST_DESCRIPTION}" >&3
     export TEST_DIR="$(mktemp -d)"
     export TEMPLATE_DIR="$(pwd)"
     cd "$TEST_DIR"
