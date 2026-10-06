@@ -26,19 +26,18 @@ CHANGELOG_ARGS: dict[str, Any] = {
 }
 
 
-def check_cli(session: nox.Session, args: list[str]) -> str:
+def check_cli(session: nox.Session, args: list[str], default: str = 'all') -> str:
     """Check the CLI arguments.
 
     Arguments:
         session: The nox session.
         args: The available CLI arguments.
+        default: The subcommand used when none is given.
     """
     available_args = ', '.join([f'`{arg}`' for arg in args])
     msg = f'Available subcommands are one of {available_args}.'
-    session_args = list(session.posargs)
-    if not session_args:
-        session_args = ['all']
-    elif len(session_args) > 1 or session_args[0] not in args:
+    session_args = list(session.posargs) or [default]
+    if len(session_args) > 1 or session_args[0] not in args:
         session.skip(f'{msg} Instead `{" ".join(session_args)}` was given')
     return session_args[0]
 
@@ -85,7 +84,7 @@ def docs(session: nox.Session) -> None:
     Arguments:
         session: The nox session.
     """
-    arg = check_cli(session, ['serve', 'build'])
+    arg = check_cli(session, ['serve', 'build'], default='serve')
     # Not `--only-dev`: mkdocstrings imports the package to document it.
     session.run('uv', 'sync', '--active', external=True)
     session.run('properdocs', arg)
