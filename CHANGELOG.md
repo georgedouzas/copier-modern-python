@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.0.1](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.1) - 2026-10-06
+
+<small>[Compare with 2.0.0](https://github.com/georgedouzas/copier-modern-python/compare/2.0.0...2.0.1)</small>
+
+### Bug Fixes
+
+- Validate the docs session's default subcommand in check_cli ([9f9c4ac](https://github.com/georgedouzas/copier-modern-python/commit/9f9c4acb5a25f88f9ecda05084b019fafa823666) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
 ## [2.0.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.0) - 2026-10-05
 
 <small>[Compare with 1.12.0](https://github.com/georgedouzas/copier-modern-python/compare/1.12.0...2.0.0)</small>
@@ -22,6 +30,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Docs
 
+- Update changelog for version 2.0.0 ([d2a5cfa](https://github.com/georgedouzas/copier-modern-python/commit/d2a5cfa8c32c61a5a2bb6b7b89472a50ccac97d3) by georgedouzas).
 - Drop the properdocs single-tool change as branding only ([7796a67](https://github.com/georgedouzas/copier-modern-python/commit/7796a6719b88b413503b253573128098ab79da2d) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 - Sync and archive the ship-spec-tooling change ([b7c8663](https://github.com/georgedouzas/copier-modern-python/commit/b7c86636765bb543e491664786fb3529dc64c718) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
 - Drop the spec tool sentence from the constitution profile ([3d218aa](https://github.com/georgedouzas/copier-modern-python/commit/3d218aa7e6a78d826e8c69e3b2f15287693ae2f3) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
