@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.0.2](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.2) - 2026-10-11
+
+<small>[Compare with 2.0.1](https://github.com/georgedouzas/copier-modern-python/compare/2.0.1...2.0.2)</small>
+
+### Bug Fixes
+
+- Make the generated docs API script run on Python 3.14 ([0844b92](https://github.com/georgedouzas/copier-modern-python/commit/0844b925199d1f3a9d345a6a7c024a7e29f9f697) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.0.1](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.1) - 2026-10-06
 
 <small>[Compare with 2.0.0](https://github.com/georgedouzas/copier-modern-python/compare/2.0.0...2.0.1)</small>
@@ -13,6 +21,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Bug Fixes
 
 - Validate the docs session's default subcommand in check_cli ([9f9c4ac](https://github.com/georgedouzas/copier-modern-python/commit/9f9c4acb5a25f88f9ecda05084b019fafa823666) by georgedouzas). Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>
+
+### Docs
+
+- Update changelog for version 2.0.1 ([471fd4c](https://github.com/georgedouzas/copier-modern-python/commit/471fd4cc8dc69e0b081cb0ac25e4f32fb9e43f13) by georgedouzas).
 
 ## [2.0.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.0) - 2026-10-05
 
