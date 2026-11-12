@@ -1,13 +1,4 @@
-{%- set minor_versions = [] -%}
-{%- for version in python_versions.rsplit(',') -%}
-{%- set offset = (-1 if loop.index == 1 else 1) if '=' in version else 0 -%}
-{%- set version = version|replace('>', '')|replace('<', '')|replace('=', '') -%}
-{{- minor_versions.append(version.rsplit('.')[1]|int + offset) or '' -}}
-{%- endfor -%}
-{%- set versions = [] -%}
-{%- for minor_version in range(minor_versions[0] + 1, minor_versions[1]) -%}
-{{- versions.append('3.' + minor_version|string) or '' -}}
-{%- endfor -%}
+{%- set versions = python_test_versions -%}
 name: CI
 
 on:

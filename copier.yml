@@ -56,14 +56,45 @@ azure_devops_project:
   default: "{{ repository_name }}"
 
 # Python
+# The newest Python minor version the template supports. A range without an upper bound runs up to it.
+python_newest_supported:
+  type: int
+  default: 13
+  when: false
+
 python_versions:
   type: str
-  help: The range of Python versions that your project supports
+  help: >-
+    The range of Python versions that your project supports, as a lower bound `>=3.N` or `>3.N`
+    optionally followed by an upper bound `<3.M` or `<=3.M`, for example `>=3.11, <3.14` or `>=3.12`
   default: ">=3.11, <3.14"
-  validator: >-
-    {% set min_version = python_versions.split(',')[0] %}
-    {% set last_part = min_version.split('.')[-1] | int %}
-    {% if last_part < 11 %}Minimum version is Python 3.11{% endif %}
+  validator: |-
+    {%- set bounds = python_versions | regex_search('^\\s*(>=?)\\s*3\\.(\\d+)(?:\\.\\d+)?\\s*(?:,\\s*(<=?)\\s*3\\.(\\d+)\\s*)?$', '\\1', '\\2', '\\3', '\\4') -%}
+    {%- if not bounds -%}
+    Use a lower bound `>=3.N` or `>3.N`, optionally followed by an upper bound `<3.M` or `<=3.M`, for example `>=3.11, <3.14` or `>=3.12`
+    {%- else -%}
+    {%- set lowest = bounds[1] | int + (1 if bounds[0] == '>' else 0) -%}
+    {%- set highest = (bounds[3] | int - (1 if bounds[2] == '<' else 0)) if bounds[3] else python_newest_supported -%}
+    {%- if lowest < 11 -%}
+    Minimum version is Python 3.11
+    {%- elif highest < lowest -%}
+    The range contains no Python version the template supports
+    {%- endif -%}
+    {%- endif -%}
+
+# The Python versions a generated project declares, tests, and builds against, derived from `python_versions`.
+python_test_versions:
+  type: yaml
+  default: |-
+    {%- set bounds = python_versions | regex_search('^\\s*(>=?)\\s*3\\.(\\d+)(?:\\.\\d+)?\\s*(?:,\\s*(<=?)\\s*3\\.(\\d+)\\s*)?$', '\\1', '\\2', '\\3', '\\4') -%}
+    {%- if bounds -%}
+    {%- set lowest = bounds[1] | int + (1 if bounds[0] == '>' else 0) -%}
+    {%- set highest = (bounds[3] | int - (1 if bounds[2] == '<' else 0)) if bounds[3] else python_newest_supported -%}
+    [{% for minor in range(lowest, highest + 1) %}"3.{{ minor }}"{{ ", " if not loop.last }}{% endfor %}]
+    {%- else -%}
+    []
+    {%- endif -%}
+  when: false
 
 package_manager:
   type: str
