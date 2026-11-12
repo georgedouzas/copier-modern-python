@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  pythonVersion: '3.11'
+  pythonVersion: '{{ python_test_versions[0] }}'
 
 stages:
 - stage: Test

@@ -13,7 +13,7 @@ cache:
     - .nox
 
 .python_template: &python_template
-  image: python:3.11
+  image: python:{{ python_test_versions[0] }}
   before_script:
     {%- if package_manager == "PDM" %}
     - pip install pdm uv
