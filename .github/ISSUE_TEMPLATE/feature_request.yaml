@@ -1,16 +1,21 @@
 name: Feature request
-description: Suggest a new algorithm, enhancement to an existing algorithm, etc.
-labels: ['feat']
+description: Suggest a new template option, a change to the generated projects, or a tool to adopt or replace.
+labels: ['enhancement']
 
 body:
 - type: textarea
   attributes:
-    label: Describe the new feauture you propose to be implemented
+    label: Describe the feature you propose
+    description: >
+      What should the template offer or generate that it does not today?
   validations:
     required: true
 - type: textarea
   attributes:
     label: Describe your proposed solution
+    description: >
+      Name the layouts, git providers, and package managers it applies to, since a change to one is expected to
+      apply to all of them.
   validations:
     required: true
 - type: textarea

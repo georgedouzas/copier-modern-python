@@ -1,0 +1,72 @@
+name: Bug report
+description: Report a template that fails to generate or generates a broken project.
+labels: ['bug']
+
+body:
+- type: markdown
+  attributes:
+    value: >
+      **Before submitting a bug, please make sure the issue hasn't been already addressed by searching
+      through [the past issues](https://github.com/georgedouzas/copier-modern-python/issues).**
+- type: textarea
+  attributes:
+    label: Describe the bug
+    description: >
+      A clear and concise description of what the bug is.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Answers used to generate the project
+    description: |
+      Paste the contents of the generated project's `.copier-answers.yml`, or the `copier copy` command with its
+      `--data` options. The answers decide which files the template renders, so a bug often depends on them.
+    render: yaml
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Steps to reproduce the bug
+    description: >
+      The commands you ran after generating the project, for example `pdm install` then `pdm checks`.
+    placeholder: |
+      copier copy gh:georgedouzas/copier-modern-python my-project
+      cd my-project
+      pdm install
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Expected results
+    description: >
+      Please paste or describe the expected results.
+    placeholder: >
+      Example: The checks pass.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Actual results
+    description: |
+      Please paste or describe the results you observe instead of the expected results. If you observe an error,
+      please paste the error message including the **full traceback** of the exception.
+    placeholder: >
+      Please paste or specifically describe the actual output or traceback.
+  validations:
+    required: true
+- type: textarea
+  attributes:
+    label: Environment
+    description: |
+      Please provide the following information.
+    placeholder: |
+      Template version (the `_commit` value in `.copier-answers.yml`)
+      Copier version
+      Python version
+      OS
+  validations:
+    required: true
+- type: markdown
+  attributes:
+    value: >
+      Thanks for contributing!
