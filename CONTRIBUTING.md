@@ -2,6 +2,18 @@
 
 Contributions are welcome, and they are greatly appreciated.
 
+## Working on the template
+
+Create and activate a virtual environment, then run `make install`. It installs the `dev` dependency group from
+`pyproject.toml`, which holds every tool that `make tests` and `make tests-integration` need, among them Copier, PDM,
+PyYAML, and the documentation tools. The CI workflow installs the same group, so a tool added there is available in
+both places.
+
+The suites also need two tools that the group cannot install. [bats](https://github.com/bats-core/bats-core) runs both
+suites, and `make tests-integration` needs [Docker](https://www.docker.com/) to build the generated Dockerfiles. With
+them in place, run `make tests` before every commit, and `make tests-integration` for a change that affects what a
+generated project does.
+
 ## Commit message convention
 
 Commit messages follow conventions based on the [Angular

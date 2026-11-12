@@ -27,9 +27,10 @@ jobs:
     - name: Set up uv
       uses: astral-sh/setup-uv@v5
 
-    - name: Install copier and bats
+    - name: Install the development tools and bats
       run: |
-        pip install copier pyyaml
+        python -m pip install --upgrade pip
+        pip install --group dev
         sudo apt-get update && sudo apt-get install -y bats
 
     - name: Run fixture tests
@@ -59,9 +60,10 @@ jobs:
       with:
         enable-cache: true
 
-    - name: Install copier, pdm and bats
+    - name: Install the development tools and bats
       run: |
-        pip install copier pdm
+        python -m pip install --upgrade pip
+        pip install --group dev
         sudo apt-get update && sudo apt-get install -y bats
 
     - name: Run integration tests

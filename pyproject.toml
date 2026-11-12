@@ -28,6 +28,7 @@ show_error_codes = true
 [dependency-groups]
 dev = [
     "copier>=9",
+    "pdm>=2.20",
     "PyYAML>=6",
     "properdocs>=1.6.7",
     "mkdocs-material>=9.1.2",
