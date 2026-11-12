@@ -26,10 +26,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install Python versions
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: |
             {%- for version in versions %}
@@ -65,7 +65,7 @@ jobs:
       run: pdm checks docs
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml
@@ -102,10 +102,10 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Install Python versions
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: |
             {%- for version in versions %}
@@ -129,7 +129,7 @@ jobs:
       run: pdm tests
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml
@@ -153,7 +153,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     {% if package_manager == "PDM" -%}
     - name: Set up PDM
@@ -172,7 +172,7 @@ jobs:
       run: pdm docs build
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml

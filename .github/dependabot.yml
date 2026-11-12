@@ -1,0 +1,24 @@
+# Keeps the repository's own workflow actions and pre-commit hooks current. Generated projects use Renovate instead,
+# and the action pins inside the `.jinja` workflow templates move by hand, since no update bot reads them.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+  - package-ecosystem: pre-commit
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore
+    groups:
+      pre-commit:
+        patterns:
+          - "*"
