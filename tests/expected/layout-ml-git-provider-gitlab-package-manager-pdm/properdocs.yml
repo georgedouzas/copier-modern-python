@@ -28,7 +28,6 @@ nav:
   - Development:
     - development/index.md
     - Contributing: development/contributing.md
-    - Code of Conduct: development/code_of_conduct.md
 
 extra_css:
   - css/style.css

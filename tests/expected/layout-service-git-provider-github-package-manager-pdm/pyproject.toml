@@ -38,7 +38,6 @@ Changelog = "https://gdouzas.github.io/test-repo/changelog"
 Repository = "https://github.com/gdouzas/test-repo"
 Issues = "https://github.com/gdouzas/test-repo/issues"
 Discussions = "https://github.com/gdouzas/test-repo/discussions"
-Funding = "https://github.com/sponsors/gdouzas"
 
 [tool.pdm.version]
 source = "scm"
