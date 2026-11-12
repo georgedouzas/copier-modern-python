@@ -16,6 +16,7 @@ COMMON = {
     'author_email': 'gdouzas@icloud.com',
     'author_username': 'gdouzas',
     'repository_name': 'test-repo',
+    'copyright_date': '2026',
 }
 LAYOUTS = {
     'library': 'library',

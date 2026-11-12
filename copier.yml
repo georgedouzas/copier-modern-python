@@ -202,4 +202,4 @@ copyright_holder_email:
 copyright_date:
   type: str
   help: The copyright date
-  default: "2026"
+  default: "{{ '%Y' | strftime }}"

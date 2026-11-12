@@ -75,6 +75,7 @@ teardown() {
             --data author_email="gdouzas@icloud.com" \
             --data author_username="gdouzas" \
             --data repository_name="test-repo" \
+        --data copyright_date="2026" \
             "${data[@]}" || true
 
         if [ ! -d "$out" ]; then
