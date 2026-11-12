@@ -154,7 +154,7 @@ The template will prompt you for various configuration options including:
 - Whether to include a Dockerfile, and the spec-driven workflow tool (OpenSpec, Spec Kit, or None)
 - Git provider (GitHub, GitLab, Azure DevOps, Bitbucket, or None)
 - License selection
-- Python version requirements
+- Python version requirements, `>=3.11, <3.15` by default, so a project supports and tests Python 3.11 to 3.14
 - Publishing preferences, unless the layout publishes nothing
 
 ### Updating an Existing Project

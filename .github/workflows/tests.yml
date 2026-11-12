@@ -52,6 +52,7 @@ jobs:
           3.11
           3.12
           3.13
+          3.14
 
     - name: Set up uv
       uses: astral-sh/setup-uv@v5

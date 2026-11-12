@@ -59,7 +59,7 @@ azure_devops_project:
 # The newest Python minor version the template supports. A range without an upper bound runs up to it.
 python_newest_supported:
   type: int
-  default: 13
+  default: 14
   when: false
 
 python_versions:
@@ -67,7 +67,7 @@ python_versions:
   help: >-
     The range of Python versions that your project supports, as a lower bound `>=3.N` or `>3.N`
     optionally followed by an upper bound `<3.M` or `<=3.M`, for example `>=3.11, <3.14` or `>=3.12`
-  default: ">=3.11, <3.14"
+  default: ">=3.11, <3.15"
   validator: |-
     {%- set bounds = python_versions | regex_search('^\\s*(>=?)\\s*3\\.(\\d+)(?:\\.\\d+)?\\s*(?:,\\s*(<=?)\\s*3\\.(\\d+)\\s*)?$', '\\1', '\\2', '\\3', '\\4') -%}
     {%- if not bounds -%}

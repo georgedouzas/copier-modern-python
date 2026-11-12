@@ -12,7 +12,7 @@ nox.options.default_venv_backend = 'uv'
 nox.options.error_on_external_run = True
 nox.options.reuse_existing_virtualenvs = True
 
-PYTHON_VERSIONS: list[str] = ['3.11', '3.12', '3.13']
+PYTHON_VERSIONS: list[str] = ['3.11', '3.12', '3.13', '3.14']
 FILES: list[str] = ['src', 'tests', 'docs', 'noxfile.py']
 CHANGELOG_ARGS: dict[str, Any] = {
     'repository': '.',

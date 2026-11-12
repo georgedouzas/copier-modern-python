@@ -210,7 +210,7 @@ to fill in as the project takes shape.
 
 - Ecosystem contract: TODO name the framework contract this project conforms to (for example, an estimator or plugin
   contract, a web framework's application contract, or none if the project defines its own).
-- Language: Python >=3.11, <3.14.
+- Language: Python >=3.11, <3.15.
 - Build and tooling: PDM with SCM-derived versioning and a `src`
   layout. The `nox` sessions are `formatting`, `checks`, `tests`, `docs`, `changelog`, and `release`. The gate covers
   `ruff`, `mypy`, `bandit`, `pip-audit`, `deptry`, `pydoclint`, and `interrogate`, with `pytest` under branch coverage

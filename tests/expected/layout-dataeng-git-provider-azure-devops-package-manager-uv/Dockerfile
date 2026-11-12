@@ -1,5 +1,5 @@
 # Build stage: resolve and install dependencies against a full toolchain.
-FROM python:3.13-slim AS build
+FROM python:3.14-slim AS build
 
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PYTHONDONTWRITEBYTECODE=1
@@ -20,7 +20,7 @@ COPY . .
 RUN uv build --wheel && pip install --no-cache-dir --target=/install dist/*.whl
 
 # Runtime stage: carry the installed package and nothing that built it.
-FROM python:3.13-slim AS runtime
+FROM python:3.14-slim AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
