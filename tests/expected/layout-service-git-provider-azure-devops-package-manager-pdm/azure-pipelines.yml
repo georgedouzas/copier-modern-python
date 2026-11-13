@@ -24,7 +24,7 @@ stages:
 
     - script: |
         python -m pip install --upgrade pip
-        pip install pdm
+        pip install pdm uv
       displayName: 'Install dependencies'
 
     - script: |
@@ -44,7 +44,7 @@ stages:
 
     - script: |
         python -m pip install --upgrade pip
-        pip install pdm
+        pip install pdm uv
       displayName: 'Install dependencies'
 
     - script: |
@@ -65,7 +65,7 @@ stages:
 
     - script: |
         python -m pip install --upgrade pip
-        pip install pdm
+        pip install pdm uv
       displayName: 'Install dependencies'
 
     - script: |

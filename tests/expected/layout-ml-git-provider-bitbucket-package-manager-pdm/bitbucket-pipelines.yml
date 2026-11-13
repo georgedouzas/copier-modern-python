@@ -7,7 +7,7 @@ pipelines:
         caches:
           - pip
         script:
-          - pip install pdm
+          - pip install pdm uv
           - pdm install
           - pdm tests
         artifacts:
@@ -19,7 +19,7 @@ pipelines:
         caches:
           - pip
         script:
-          - pip install pdm
+          - pip install pdm uv
           - pdm install
           - pdm checks
 
@@ -30,7 +30,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm tests
           artifacts:
@@ -42,7 +42,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm checks
 
@@ -51,7 +51,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm docs build
           artifacts:
@@ -64,7 +64,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm tests
 
@@ -73,7 +73,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm checks
 
