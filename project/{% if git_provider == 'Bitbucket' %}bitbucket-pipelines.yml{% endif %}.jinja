@@ -8,7 +8,7 @@ pipelines:
           - pip
         script:
           {%- if package_manager == "PDM" %}
-          - pip install pdm
+          - pip install pdm uv
           - pdm install
           - pdm tests
           {%- else %}
@@ -26,7 +26,7 @@ pipelines:
           - pip
         script:
           {%- if package_manager == "PDM" %}
-          - pip install pdm
+          - pip install pdm uv
           - pdm install
           - pdm checks
           {%- else %}
@@ -43,7 +43,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm tests
             {%- else %}
@@ -61,7 +61,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm checks
             {%- else %}
@@ -76,7 +76,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm docs build
             {%- else %}
@@ -95,7 +95,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm tests
             {%- else %}
@@ -110,7 +110,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm
+            - pip install pdm uv
             - pdm install
             - pdm checks
             {%- else %}

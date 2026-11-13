@@ -25,7 +25,7 @@ stages:
     - script: |
         python -m pip install --upgrade pip
         {%- if package_manager == "PDM" %}
-        pip install pdm
+        pip install pdm uv
         {%- else %}
         pip install uv
         {%- endif %}
@@ -54,7 +54,7 @@ stages:
     - script: |
         python -m pip install --upgrade pip
         {%- if package_manager == "PDM" %}
-        pip install pdm
+        pip install pdm uv
         {%- else %}
         pip install uv
         {%- endif %}
@@ -84,7 +84,7 @@ stages:
     - script: |
         python -m pip install --upgrade pip
         {%- if package_manager == "PDM" %}
-        pip install pdm
+        pip install pdm uv
         {%- else %}
         pip install uv
         {%- endif %}

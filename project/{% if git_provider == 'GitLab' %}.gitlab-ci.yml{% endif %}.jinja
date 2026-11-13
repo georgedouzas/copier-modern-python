@@ -16,7 +16,7 @@ cache:
   image: python:3.11
   before_script:
     {%- if package_manager == "PDM" %}
-    - pip install pdm
+    - pip install pdm uv
     {%- else %}
     - pip install uv
     {%- endif %}
