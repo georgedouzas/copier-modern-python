@@ -52,6 +52,9 @@ jobs:
         cache: true
         cache-dependency-path: pyproject.toml
 
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+
     - name: Install dependencies
       run: pdm install --no-default -dG maintenance -dG checks
 
@@ -125,6 +128,9 @@ jobs:
         cache: true
         cache-dependency-path: pyproject.toml
 
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+
     - name: Install dependencies
       run: pdm install -dG maintenance -dG tests
 
@@ -164,6 +170,9 @@ jobs:
       with:
         cache: true
         cache-dependency-path: pyproject.toml
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
 
     - name: Install dependencies
       run: pdm install -dG maintenance -dG docs
