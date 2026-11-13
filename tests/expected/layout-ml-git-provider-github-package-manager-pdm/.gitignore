@@ -31,6 +31,8 @@ htmlcov/
 # in development and CI.
 .pdm-python
 .pdm.toml
+# PDM resolves and installs with uv but keeps its own lock, so a uv lock file is never wanted.
+uv.lock
 
 # Documentation
 site/

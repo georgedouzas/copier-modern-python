@@ -30,6 +30,9 @@ jobs:
         cache: true
         cache-dependency-path: pyproject.toml
 
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v5
+
     - name: Build distribution
       run: pdm build
 

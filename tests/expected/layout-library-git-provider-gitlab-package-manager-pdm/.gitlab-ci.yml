@@ -15,7 +15,7 @@ cache:
 .python_template: &python_template
   image: python:3.11
   before_script:
-    - pip install pdm
+    - pip install pdm uv
 
 test:
   <<: *python_template
