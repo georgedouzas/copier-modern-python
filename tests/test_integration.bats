@@ -58,6 +58,8 @@ teardown() {
     step pdm tests
     [ "$status" -eq 0 ]
     [ -f coverage.xml ]
+    # PDM installs with uv but keeps pdm.lock as the only lock file.
+    [ ! -f uv.lock ]
 }
 
 @test "Generated uv project installs, checks and tests pass" {
