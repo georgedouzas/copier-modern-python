@@ -192,6 +192,32 @@ teardown() {
     [ -f Dockerfile ]
 }
 
+@test "Generated service with unusual answers installs, checks, tests and keeps the answers" {
+    command -v uv >/dev/null || skip "uv not installed"
+
+    generate proj --data project_layout=service --data package_manager=uv \
+        --data project_description="Kedro's \"data\" tool, Données" \
+        --data author_fullname="Seán O'Brien"
+    cd proj
+    init_git
+
+    step uv sync
+    [ "$status" -eq 0 ]
+
+    step uv run nox -s checks
+    [ "$status" -eq 0 ]
+
+    step uv run nox -s tests
+    [ "$status" -eq 0 ]
+
+    step uv run python -c 'import test_repo, test_repo.app as a; print(a.app.description); print(test_repo.__doc__)'
+    [ "$status" -eq 0 ]
+    # The last two lines, since uv may print warnings on stderr first.
+    local count=${#lines[@]}
+    [ "${lines[count - 2]}" = "Kedro's \"data\" tool, Données" ]
+    [ "${lines[count - 1]}" = "Kedro's \"data\" tool, Données." ]
+}
+
 @test "Library and script layouts carry no Dockerfile by default" {
     generate proj
     [ ! -f proj/Dockerfile ]
