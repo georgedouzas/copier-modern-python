@@ -11,7 +11,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends git \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir pdm
+RUN pip install --no-cache-dir pdm uv
 
 # The whole context, including .git, since the version is read from the SCM tags. This stage
 # is discarded, so nothing here reaches the final image; .dockerignore keeps the context lean.
