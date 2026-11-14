@@ -1,3 +1,4 @@
+{%- from 'includes/quoting.jinja' import toml_key, toml_str -%}
 [build-system]
 {% if package_manager == "PDM" -%}
 requires = ["pdm-backend"]
@@ -8,8 +9,8 @@ build-backend = "hatchling.build"
 {% endif %}
 [project]
 name = "{{ python_package_distribution_name }}"
-description = "{{ project_description }}"
-authors = [{name = "{{ author_fullname }}", email = "{{ author_email }}"}]
+description = {{ toml_str(project_description) }}
+authors = [{name = {{ toml_str(author_fullname) }}, email = {{ toml_str(author_email) }}}]
 {% if copyright_license != "None" -%}
 license = "
     {%- if copyright_license == "Academic Free License v3.0" -%}
@@ -145,7 +146,7 @@ Issues = "https://bitbucket.org/{{ namespace_path }}/{{ repo_path }}/issues"
 {% endif -%}
 {% if project_layout == "script" %}
 [project.scripts]
-{{ repository_name }} = "{{ python_package_import_name }}.cli:main"
+{{ toml_key(repository_name) }} = "{{ python_package_import_name }}.cli:main"
 {% endif -%}
 {% if package_manager == "PDM" %}
 [tool.pdm.version]

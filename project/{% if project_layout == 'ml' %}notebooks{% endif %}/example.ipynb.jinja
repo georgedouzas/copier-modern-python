@@ -1,10 +1,11 @@
+{%- from 'includes/quoting.jinja' import dq_escape -%}
 {
  "cells": [
   {
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "# {{ repository_name }}\n",
+    "# {{ dq_escape(repository_name) }}\n",
     "\n",
     "This notebook is executed by the test suite, so it is a check as well as an example.\n",
     "Replace it with your own work; keep it runnable, or the check stops meaning anything."

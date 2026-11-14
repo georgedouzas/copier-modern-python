@@ -1,3 +1,4 @@
+{%- from 'includes/quoting.jinja' import toml_str -%}
 {%- set namespace_path = repository_namespace | urlencode if repository_namespace is defined else "" -%}
 {%- set repo_path = repository_name | urlencode -%}
 {%- set username_path = author_username | urlencode if author_username is defined else "" -%}
@@ -21,12 +22,12 @@
 {%- set author_url = "https://bitbucket.org/" ~ username_path -%}
 {%- set social_icon = "fontawesome/brands/bitbucket" -%}
 {%- endif -%}
-site_name: "{{ repository_name }}"
-site_description: "{{ project_description }}"
+site_name: {{ toml_str(repository_name) }}
+site_description: {{ toml_str(project_description) }}
 {% if docs_url %}site_url: "{{ docs_url }}"
 {% endif -%}
 {% if repo_url %}repo_url: "{{ repo_url }}"
-repo_name: "{{ repository_namespace }}/{{ repository_name }}"
+repo_name: {{ toml_str(repository_namespace ~ "/" ~ repository_name) }}
 {% endif -%}
 site_dir: "site"
 watch: [README.md, CONTRIBUTING.md, CHANGELOG.md, src/{{ python_package_import_name }}{% if project_layout == "ml" %}, notebooks{% endif %}]

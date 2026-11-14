@@ -1,3 +1,4 @@
+{%- from 'includes/quoting.jinja' import py_str -%}
 """The web API for `{{ python_package_import_name }}`.
 
 Run it locally with `uvicorn {{ python_package_import_name }}.app:app --reload`. No broker,
@@ -7,7 +8,7 @@ database or other service is required to start it.
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-app = FastAPI(title='{{ repository_name }}', description='{{ project_description }}')
+app = FastAPI(title={{ py_str(repository_name) }}, description={{ py_str(project_description) }})
 
 
 class Health(BaseModel):

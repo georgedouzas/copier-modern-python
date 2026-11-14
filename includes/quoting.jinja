@@ -1,0 +1,36 @@
+{#- Write answers inside quoted strings so the generated file parses whatever the answer holds.
+    Validators in copier.yml reject backslashes and newlines in free text answers, so only quotes need
+    escaping here. -#}
+
+{#- The answer with every double quote escaped, for the inside of a TOML, YAML or JSON double quoted
+    string. -#}
+{%- macro dq_escape(value) -%}
+{{ value | replace('"', '\\"') }}
+{%- endmacro -%}
+
+{#- The answer as a TOML, YAML or JSON double quoted string. -#}
+{%- macro toml_str(value) -%}
+"{{ dq_escape(value) }}"
+{%- endmacro -%}
+
+{#- The answer as a Python string literal, quoted the way repr quotes it: single quotes unless the
+    answer holds a single quote and no double quote. An answer holding both keeps single quotes and
+    escapes them, which ruff accepts since switching quotes would not avoid an escape. -#}
+{%- macro py_str(value) -%}
+{%- if "'" not in value -%}
+'{{ value }}'
+{%- elif '"' not in value -%}
+"{{ value }}"
+{%- else -%}
+'{{ value | replace("'", "\\'") }}'
+{%- endif -%}
+{%- endmacro -%}
+
+{#- The answer as a TOML key: bare when TOML allows it, quoted otherwise. -#}
+{%- macro toml_key(value) -%}
+{%- if value | regex_search('^[A-Za-z0-9_-]+$') -%}
+{{ value }}
+{%- else -%}
+{{ toml_str(value) }}
+{%- endif -%}
+{%- endmacro -%}
