@@ -154,7 +154,9 @@ The template will prompt you for various configuration options including:
 - Whether to include a Dockerfile, and the spec-driven workflow tool (OpenSpec, Spec Kit, or None)
 - Git provider (GitHub, GitLab, Azure DevOps, Bitbucket, or None)
 - License selection
-- Python version requirements, `>=3.11, <3.15` by default, so a project supports and tests Python 3.11 to 3.14
+- Python version requirements, by default `>=3.11, <3.16` (Python 3.11 to 3.15) for the library, command line tool
+  and service layouts, and `>=3.11, <3.15` (3.11 to 3.14) for the machine learning and data engineering layouts,
+  until Metaflow and Kedro support Python 3.15
 - Publishing preferences, unless the layout publishes nothing
 
 ### Updating an Existing Project
