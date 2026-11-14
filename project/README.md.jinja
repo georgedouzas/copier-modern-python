@@ -79,7 +79,8 @@ pip install {{ python_package_distribution_name }}
 ```
 {% endif %}
 Development installation requires to clone the repository and then use [{% if package_manager == "PDM" %}PDM](https://github.com/pdm-project/pdm){% else %}uv](https://github.com/astral-sh/uv){% endif %} to install the
-project as well as the main and development dependencies:
+project as well as the main and development dependencies{% if package_manager == "PDM" %}. PDM installs through
+[uv](https://github.com/astral-sh/uv), so both must be installed{% endif %}:
 
 ```bash
 {% if git_provider == "GitHub" -%}
