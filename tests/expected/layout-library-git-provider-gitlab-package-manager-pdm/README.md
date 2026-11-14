@@ -55,7 +55,8 @@ pip install test_repo
 ```
 
 Development installation requires to clone the repository and then use [PDM](https://github.com/pdm-project/pdm) to install the
-project as well as the main and development dependencies:
+project as well as the main and development dependencies. PDM installs through
+[uv](https://github.com/astral-sh/uv), so both must be installed:
 
 ```bash
 git clone https://gitlab.com/gdouzas/test-repo.git
