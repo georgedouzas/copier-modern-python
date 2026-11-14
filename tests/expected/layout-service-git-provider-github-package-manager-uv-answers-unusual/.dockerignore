@@ -1,0 +1,16 @@
+# Keep the build context small. .git is deliberately NOT excluded: the build reads the
+# project version from the SCM tags, and it never reaches the final image because the build
+# stage that copies it is discarded.
+.venv/
+.nox/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.pyc
+build/
+dist/
+site/
+htmlcov/
+coverage.xml
+.coverage*

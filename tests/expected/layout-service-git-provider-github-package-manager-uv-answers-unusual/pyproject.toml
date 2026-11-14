@@ -1,0 +1,162 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[project]
+name = "test_repo"
+description = "Kedro's \"data\" tool, Données"
+authors = [{name = "Seán O'Brien", email = "gdouzas@icloud.com"}]
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.11, <3.15"
+keywords = []
+dynamic = ["version"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Documentation",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+dependencies = [
+    "fastapi>=0.115",
+    "pydantic>=2.0",
+    "uvicorn[standard]>=0.34",
+]
+
+[project.urls]
+Homepage = "https://gdouzas.github.io/test-repo"
+Documentation = "https://gdouzas.github.io/test-repo"
+Changelog = "https://gdouzas.github.io/test-repo/changelog"
+Repository = "https://github.com/gdouzas/test-repo"
+Issues = "https://github.com/gdouzas/test-repo/issues"
+Discussions = "https://github.com/gdouzas/test-repo/discussions"
+[dependency-groups]
+dev = [
+    "properdocs>=1.6.7",
+    "mkdocs-coverage>=1.1.0",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.1",
+    "mkdocs-material>=9.5.27",
+    "mkdocs-gallery>=0.10.1",
+    "mkdocs-section-index>=0.3.9",
+    "mkdocstrings[python]>=0.25.1",
+    "markdown-callouts>=0.4.0",
+    "markdown-exec>=1.9.3",
+    "pandas>=2.2.2",
+    "black>=24.4.2",
+    "docformatter>=1.7.5",
+    "ruff>=0.5.0",
+    "pip-audit>=2.7.3",
+    "bandit[toml]>=1.7.5",
+    "mypy>=1.10.1",
+    "types-markdown>=3.6.0.20240316",
+    "types-toml>=0.10.8.20240310",
+    "interrogate>=1.7.0",
+    "pydoclint>=0.9.1",
+    "deptry>=0.25.1",
+    "pytest>=8.2.2",
+    "pytest-cov>=5.0.0",
+    "pytest-randomly>=3.15.0",
+    "pytest-xdist>=3.6.1",
+    "httpx>=0.28.0",
+    "git-changelog>=2.5.2",
+    "nox[uv]>=2024.4.15",
+]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/test_repo"]
+
+[tool.black]
+line-length = 120
+extend-exclude = "(tests/fixtures|docs/generated)"
+skip-string-normalization = true
+target-version = ["py311"]
+
+[tool.docformatter]
+in-place = true
+recursive = true
+close-quotes-on-newline = true
+wrap-descriptions = 120
+wrap-summaries = 120
+
+[tool.ruff]
+extend-exclude = ["docs/generated"]
+force-exclude = true
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+ignore = ["D202", "N806", "N803", "S101", "INP001", "Q000", "TRY002", "PLR0913", "EXE001", "EXE002", "E741"]
+select = ["C", "E", "F", "W", "B", "I", "D", "N", "UP", "YTT", "ANN", "S",
+"BLE", "A", "COM", "C4", "DTZ", "T10", "EM", "EXE", "ISC", "ICN", "G",
+"INP", "PIE", "T20", "PT", "Q", "RET501", "RET502", "RET503", "SIM",
+"PTH", "PD", "PGH", "PL", "TRY", "RUF", "PLE", "PLR", "PLW", "TRY", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"docs/examples/*" = ["ANN", "D", "B018"]
+"docs/generated/*" = ["ANN", "D"]
+"test_*" = ["ANN"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = ["tests/fixtures/", "docs/examples/", "docs/generated/"]
+warn_unused_ignores = true
+show_error_codes = true
+
+[tool.pydoclint]
+# Verifies docstrings match the signature, which interrogate cannot: interrogate counts
+# docstrings, this one reads them.
+style = "google"
+arg-type-hints-in-docstring = false
+check-return-types = false
+check-yield-types = false
+
+[tool.deptry.per_rule_ignores]
+# uvicorn is the server the container runs, invoked as a command rather than imported.
+# Declared because deploying without it fails; unimported because nothing should import it.
+DEP002 = ["uvicorn"]
+
+[tool.bandit]
+# Read by the checks nox session, which passes `-c pyproject.toml`. B101 is the
+# bandit counterpart of the ruff S101 ignore above: asserts are how tests assert.
+skips = ["B101"]
+
+[tool.pip-audit]
+# Advisory IDs to ignore, read by the checks nox session. PYSEC-2022-42969 is a
+# won't-fix ReDoS in py, pulled in transitively by interrogate.
+ignore-vulns = ["PYSEC-2022-42969"]
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py"]
+addopts = "--cov"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = ["src", "tests"]
+
+[tool.coverage.paths]
+equivalent = ["src", "__pypackages__"]
+
+[tool.coverage.report]
+precision = 2
+omit = ["src/*/__init__.py", "tests/__init__.py"]
+
+[tool.coverage.json]
+output = "htmlcov/coverage.json"

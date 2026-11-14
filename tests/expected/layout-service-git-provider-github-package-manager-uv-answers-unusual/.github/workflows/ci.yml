@@ -1,0 +1,124 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+
+  checks:
+
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - macos-latest
+        - windows-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Install Python versions
+      uses: actions/setup-python@v7
+      with:
+        python-version: |
+            3.11
+            3.12
+            3.13
+            3.14
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v10.3.3
+      with:
+        enable-cache: true
+        cache-dependency-glob: pyproject.toml
+
+    - name: Install dependencies
+      run: uv sync --only-dev
+
+    - name: Check code quality
+      run: uv run nox -s checks -- quality
+
+    - name: Check type annotations
+      run: uv run nox -s checks -- types
+
+    - name: Check vulnerabilities in dependencies
+      run: uv run nox -s checks -- dependencies
+
+    - name: Check security issues
+      run: uv run nox -s checks -- security
+
+    - name: Check docstring coverage
+      run: uv run nox -s checks -- docs
+
+  tests:
+
+    strategy:
+      matrix:
+        os:
+        - ubuntu-latest
+        - macos-latest
+        - windows-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Install Python versions
+      uses: actions/setup-python@v7
+      with:
+        python-version: |
+            3.11
+            3.12
+            3.13
+            3.14
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v10.3.3
+      with:
+        enable-cache: true
+        cache-dependency-glob: pyproject.toml
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Run the test suite
+      run: uv run nox -s tests
+
+  doc:
+
+    if: ${{ github.ref != 'refs/heads/main' }}
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13', '3.14']
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v10.3.3
+      with:
+        enable-cache: true
+        cache-dependency-glob: pyproject.toml
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: uv sync
+
+    - name: Build documentation with Python ${{ matrix.python-version }}
+      run: uv run nox -s docs -- build

@@ -45,6 +45,10 @@ fixture_data() {
     [[ "$name" == *-license-none ]] && printf -- '--data\ncopyright_license=None\n'
     [[ "$name" == *-spec-tool-speckit ]] && printf -- '--data\nspec_tool=speckit\n'
     [[ "$name" == *-spec-tool-none ]] && printf -- '--data\nspec_tool=none\n'
+    if [[ "$name" == *-answers-unusual ]]; then
+        printf -- '--data\nproject_description=%s\n' "Kedro's \"data\" tool, Données"
+        printf -- '--data\nauthor_fullname=%s\n' "Seán O'Brien"
+    fi
 }
 
 setup() {

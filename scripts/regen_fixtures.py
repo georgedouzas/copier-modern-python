@@ -32,6 +32,11 @@ GIT_PROVIDERS = {
     'bitbucket': 'Bitbucket',
     'none': 'None',
 }
+# Answers with quotes, apostrophes, non ASCII text and no full stop, which the generated files must carry.
+UNUSUAL_ANSWERS = {
+    'project_description': 'Kedro\'s "data" tool, Données',
+    'author_fullname': 'Seán O\'Brien',
+}
 PACKAGE_MANAGERS = {
     'pdm': 'PDM',
     'uv': 'uv',
@@ -63,6 +68,12 @@ def build_fixtures() -> dict[str, dict[str, str]]:
     fixtures[f'{base}-license-none'] = {**defaults, 'copyright_license': 'None'}
     fixtures[f'{base}-spec-tool-speckit'] = {**defaults, 'spec_tool': 'speckit'}
     fixtures[f'{base}-spec-tool-none'] = {**defaults, 'spec_tool': 'none'}
+    fixtures['layout-service-git-provider-github-package-manager-uv-answers-unusual'] = {
+        'project_layout': 'service',
+        'git_provider': 'GitHub',
+        'package_manager': 'uv',
+        **UNUSUAL_ANSWERS,
+    }
     return fixtures
 
 
