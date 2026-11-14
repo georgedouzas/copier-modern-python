@@ -44,7 +44,7 @@ def check_cli(session: nox.Session, args: list[str], default: str = 'all') -> st
 
 @nox.session
 def clean(session: nox.Session) -> None:
-    """Clean build artifacts and cache files.
+    """Clean build artifacts, cache files, and the project's virtual environment.
 
     Arguments:
         session: The nox session.
@@ -61,6 +61,7 @@ def clean(session: nox.Session) -> None:
         '__pycache__',
         'docs/generated',
         '.nox',
+        '.venv',
         '.ruff_cache',
         'coverage.xml',
         '.metaflow',
