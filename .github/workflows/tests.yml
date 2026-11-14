@@ -68,3 +68,63 @@ jobs:
 
     - name: Run integration tests
       run: make tests-integration
+
+  windows-clean:
+
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+
+    runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package-manager: [PDM, uv]
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v7
+
+    - name: Install Python
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v10.3.3
+
+    - name: Install the development tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install --group dev
+
+    - name: Generate and install a project
+      run: |
+        copier copy . "$RUNNER_TEMP/proj" --defaults --vcs-ref=HEAD \
+          --data project_description="A test project." \
+          --data author_fullname="Test" \
+          --data author_email="test@example.com" \
+          --data author_username="test" \
+          --data repository_name="test-repo" \
+          --data package_manager="${{ matrix.package-manager }}"
+        cd "$RUNNER_TEMP/proj"
+        git init -q
+        git add -A
+        git -c user.email=test@example.com -c user.name=test commit -qm init
+        git tag 0.1.0
+        if [ "${{ matrix.package-manager }}" = PDM ]; then pdm install; else uv sync; fi
+
+    - name: Clean keeps a working .venv and removes the other artifacts
+      run: |
+        cd "$RUNNER_TEMP/proj"
+        touch coverage.xml .coverage
+        mkdir -p .pytest_cache
+        if [ "${{ matrix.package-manager }}" = PDM ]; then pdm clean 2>&1 | tee clean.log; else uv run nox -s clean 2>&1 | tee clean.log; fi
+        grep -q "Kept .venv" clean.log
+        .venv/Scripts/python -c "print('the environment still works')"
+        test ! -e coverage.xml
+        test ! -e .coverage
+        test ! -e .pytest_cache
