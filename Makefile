@@ -16,8 +16,9 @@ checks:
 tests: checks
 	@TERM=$${TERM:-dumb} bats --formatter pretty tests/test_copier.bats
 	@$(PYTHON) scripts/check_pipelines.py
+	@$(PYTHON) scripts/check_parse.py
 	@$(PYTHON) scripts/check_docs.py
-	@echo "tests OK: golden suite, pipeline check, and docs gate all passed"
+	@echo "tests OK: golden suite, pipeline and parse checks, and docs gate all passed"
 
 tests-integration:
 	@TERM=$${TERM:-dumb} bats --formatter pretty tests/test_integration.bats
