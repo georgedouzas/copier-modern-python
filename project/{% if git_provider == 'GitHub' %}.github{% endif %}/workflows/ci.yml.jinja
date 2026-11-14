@@ -44,7 +44,7 @@ jobs:
         cache-dependency-path: pyproject.toml
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10.3.3
 
     - name: Install dependencies
       run: pdm install --no-default -dG maintenance -dG checks
@@ -65,7 +65,7 @@ jobs:
       run: pdm checks docs
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10
+      uses: astral-sh/setup-uv@v10.3.3
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml
@@ -120,7 +120,7 @@ jobs:
         cache-dependency-path: pyproject.toml
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10.3.3
 
     - name: Install dependencies
       run: pdm install -dG maintenance -dG tests
@@ -129,7 +129,7 @@ jobs:
       run: pdm tests
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10
+      uses: astral-sh/setup-uv@v10.3.3
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml
@@ -163,7 +163,7 @@ jobs:
         cache-dependency-path: pyproject.toml
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v5
+      uses: astral-sh/setup-uv@v10.3.3
 
     - name: Install dependencies
       run: pdm install -dG maintenance -dG docs
@@ -172,7 +172,7 @@ jobs:
       run: pdm docs build
     {%- else -%}
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10
+      uses: astral-sh/setup-uv@v10.3.3
       with:
         enable-cache: true
         cache-dependency-glob: pyproject.toml
