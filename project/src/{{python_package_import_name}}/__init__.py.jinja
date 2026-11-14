@@ -1,3 +1,4 @@
-"""{{ project_description }}"""
+{%- set summary = project_description | trim -%}
+"""{{ summary }}{{ "" if summary[-1:] in [".", "?", "!"] else "." }}"""
 
 __all__: list[str] = []
