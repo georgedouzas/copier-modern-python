@@ -36,6 +36,9 @@ jobs:
     - name: Run fixture tests
       run: make tests
 
+    - name: Check that every pinned action version exists
+      run: make check-actions
+
   integration:
 
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'

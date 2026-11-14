@@ -1,4 +1,4 @@
-.PHONY: install docs checks tests tests-integration regen-fixtures changelog release
+.PHONY: install docs checks tests tests-integration check-actions regen-fixtures changelog release
 
 PYTHON ?= python3
 
@@ -23,6 +23,9 @@ tests: checks
 tests-integration:
 	@TERM=$${TERM:-dumb} bats --formatter pretty tests/test_integration.bats
 	@echo "tests-integration OK: every integration case passed"
+
+check-actions:
+	@$(PYTHON) scripts/check_actions.py
 
 regen-fixtures:
 	@$(PYTHON) scripts/regen_fixtures.py
