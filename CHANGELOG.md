@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.2.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.2.0) - 2026-11-14
+
+<small>[Compare with 2.1.0](https://github.com/georgedouzas/copier-modern-python/compare/2.1.0...2.2.0)</small>
+
+### Features
+
+- Support Python 3.14 in generated projects by default ([701a9c0](https://github.com/georgedouzas/copier-modern-python/commit/701a9c0d88f79c33e8ab00e276bdde58bc2c8d03) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Bug Fixes
+
+- Make the repository's own issue forms work on GitHub ([3fb3535](https://github.com/georgedouzas/copier-modern-python/commit/3fb3535f3e42cf019aeb1a879eed279599630e29) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Default the copyright year to the year of generation ([6d64ef9](https://github.com/georgedouzas/copier-modern-python/commit/6d64ef95ef3b96d1337dec86d439e4504723ef5c) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Run non-GitHub CI and the Dockerfile on a supported Python ([d58b618](https://github.com/georgedouzas/copier-modern-python/commit/d58b618fcced00565e7227fa1ff5b3a22878fad7) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Validate and parse the Python version range in one place ([cb9f305](https://github.com/georgedouzas/copier-modern-python/commit/cb9f3054e562ab5354da1a313d37c6221be3dd4a) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Chore
+
+- Move workflow actions to their current major versions ([db62112](https://github.com/georgedouzas/copier-modern-python/commit/db621124f2ab336cde13ab38c12dd297b877cf40) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Install the repository's CI tools from the dev dependency group ([9f504a4](https://github.com/georgedouzas/copier-modern-python/commit/9f504a48b80b21a40cf6a98774d36dfd2eeb1ec1) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.1.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.1.0) - 2026-11-14
 
 <small>[Compare with 2.0.2](https://github.com/georgedouzas/copier-modern-python/compare/2.0.2...2.1.0)</small>
@@ -22,6 +42,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Docs
 
+- Update changelog for version 2.1.0 ([1fa4fc4](https://github.com/georgedouzas/copier-modern-python/commit/1fa4fc4d49e4bbaabf225ff3c61ef5a2dd466597) by georgedouzas).
 - Tell PDM users that uv must be installed too ([3ffbee0](https://github.com/georgedouzas/copier-modern-python/commit/3ffbee0b106aa7f18d5b848fd5339770ccffa04f) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 
 ### Tests
