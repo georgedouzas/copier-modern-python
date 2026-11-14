@@ -12,7 +12,9 @@ both places.
 The suites also need two tools that the group cannot install. [bats](https://github.com/bats-core/bats-core) runs both
 suites, and `make tests-integration` needs [Docker](https://www.docker.com/) to build the generated Dockerfiles. With
 them in place, run `make tests` before every commit, and `make tests-integration` for a change that affects what a
-generated project does.
+generated project does. When a change touches a workflow or the action versions the template pins, also run
+`make check-actions`, which checks that every pinned action version exists on GitHub and so needs network access.
+CI runs it on every push and pull request.
 
 ## Commit message convention
 
