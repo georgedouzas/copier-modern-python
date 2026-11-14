@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.2.1](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.2.1) - 2026-11-14
+
+<small>[Compare with 2.2.0](https://github.com/georgedouzas/copier-modern-python/compare/2.2.0...2.2.1)</small>
+
+### Bug Fixes
+
+- Pin setup-uv to a release that exists ([3832226](https://github.com/georgedouzas/copier-modern-python/commit/38322265646e8454f494be39c685d962ab8c8a62) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Chore
+
+- Update the pre-commit hooks to their latest versions ([2227b15](https://github.com/georgedouzas/copier-modern-python/commit/2227b15574dc6225700fb2eeaea5d05c52debb8b) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.2.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.2.0) - 2026-11-14
 
 <small>[Compare with 2.1.0](https://github.com/georgedouzas/copier-modern-python/compare/2.1.0...2.2.0)</small>
@@ -20,6 +32,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Default the copyright year to the year of generation ([6d64ef9](https://github.com/georgedouzas/copier-modern-python/commit/6d64ef95ef3b96d1337dec86d439e4504723ef5c) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 - Run non-GitHub CI and the Dockerfile on a supported Python ([d58b618](https://github.com/georgedouzas/copier-modern-python/commit/d58b618fcced00565e7227fa1ff5b3a22878fad7) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 - Validate and parse the Python version range in one place ([cb9f305](https://github.com/georgedouzas/copier-modern-python/commit/cb9f3054e562ab5354da1a313d37c6221be3dd4a) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Docs
+
+- Update changelog for version 2.2.0 ([4f33934](https://github.com/georgedouzas/copier-modern-python/commit/4f3393457a952a00997dba9de0d15ab0819c2429) by georgedouzas).
 
 ### Chore
 
