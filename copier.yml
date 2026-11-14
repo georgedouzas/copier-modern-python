@@ -71,11 +71,24 @@ azure_devops_project:
   when: "{{ git_provider == 'Azure DevOps' }}"
   default: "{{ repository_name }}"
 
+# Project kind
+project_layout:
+  type: str
+  help: The kind of project you are starting
+  default: library
+  choices:
+    "Library, an importable package you distribute to others": library
+    "Command line tool, a program people run from a terminal": script
+    "Machine learning, experiments and models with notebooks alongside code": ml
+    "Data engineering, pipelines that move and shape data": dataeng
+    "Service, a web API you deploy and run": service
+
 # Python
-# The newest Python minor version the template supports. A range without an upper bound runs up to it.
+# The newest Python minor version the template supports for the chosen layout. A range without an upper bound
+# runs up to it. The ml and dataeng layouts stop at 3.14 until Metaflow and Kedro support 3.15.
 python_newest_supported:
   type: int
-  default: 14
+  default: "{{ 14 if project_layout in ['ml', 'dataeng'] else 15 }}"
   when: false
 
 python_versions:
@@ -83,7 +96,7 @@ python_versions:
   help: >-
     The range of Python versions that your project supports, as a lower bound `>=3.N` or `>3.N`
     optionally followed by an upper bound `<3.M` or `<=3.M`, for example `>=3.11, <3.14` or `>=3.12`
-  default: ">=3.11, <3.15"
+  default: ">=3.11, <3.{{ python_newest_supported + 1 }}"
   validator: |-
     {%- set bounds = python_versions | regex_search('^\\s*(>=?)\\s*3\\.(\\d+)(?:\\.\\d+)?\\s*(?:,\\s*(<=?)\\s*3\\.(\\d+)\\s*)?$', '\\1', '\\2', '\\3', '\\4') -%}
     {%- if not bounds -%}
@@ -95,6 +108,8 @@ python_versions:
     Minimum version is Python 3.11
     {%- elif highest < lowest -%}
     The range contains no Python version the template supports
+    {%- elif highest > python_newest_supported -%}
+    The {{ project_layout }} layout supports Python up to 3.{{ python_newest_supported }}, so use an upper bound of `<3.{{ python_newest_supported + 1 }}` or lower
     {%- endif -%}
     {%- endif -%}
 
@@ -119,17 +134,6 @@ package_manager:
   choices:
     - PDM
     - uv
-
-project_layout:
-  type: str
-  help: The kind of project you are starting
-  default: library
-  choices:
-    "Library, an importable package you distribute to others": library
-    "Command line tool, a program people run from a terminal": script
-    "Machine learning, experiments and models with notebooks alongside code": ml
-    "Data engineering, pipelines that move and shape data": dataeng
-    "Service, a web API you deploy and run": service
 
 include_dockerfile:
   type: bool

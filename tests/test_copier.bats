@@ -147,5 +147,39 @@ expect_rejected() {
         || failures=$((failures + 1))
     expect_rejected author_fullname "$one_line" --data 'author_fullname=A\B' || failures=$((failures + 1))
     expect_rejected copyright_holder "$one_line" --data 'copyright_holder=A\B' || failures=$((failures + 1))
+    expect_rejected python_versions "Use a lower bound" --data 'python_versions=~=3.12' || failures=$((failures + 1))
+    expect_rejected python_versions "Minimum version is Python 3.11" --data 'python_versions=>=3.10, <3.14' \
+        || failures=$((failures + 1))
+    expect_rejected python_versions "The range contains no Python version" --data 'python_versions=>=3.13, <3.13' \
+        || failures=$((failures + 1))
+    expect_rejected python_versions "The ml layout supports Python up to 3.14" --data project_layout=ml \
+        --data 'python_versions=>=3.11, <3.16' || failures=$((failures + 1))
+    expect_rejected python_versions "The dataeng layout supports Python up to 3.14" --data project_layout=dataeng \
+        --data 'python_versions=>=3.11, <3.16' || failures=$((failures + 1))
+    expect_rejected python_versions "The library layout supports Python up to 3.15" \
+        --data 'python_versions=>=3.11, <3.17' || failures=$((failures + 1))
+    [ "$failures" -eq 0 ]
+}
+
+@test "An open Python range runs up to the layout's newest supported version" {
+    local layout expected failures=0
+    for layout in library ml; do
+        expected="['3.12', '3.13', '3.14', '3.15']"
+        [ "$layout" = ml ] && expected="['3.12', '3.13', '3.14']"
+        copier copy "$TEMPLATE_DIR" "$TEST_DIR/$layout" --defaults --vcs-ref=HEAD \
+            --data project_description="A test project." \
+            --data author_fullname="Georgios Douzas" \
+            --data author_email="gdouzas@icloud.com" \
+            --data repository_name="test-repo" \
+            --data project_layout="$layout" \
+            --data 'python_versions=>=3.12' > /dev/null 2>&1
+        if grep -qF "PYTHON_VERSIONS: list[str] = $expected" "$TEST_DIR/$layout/noxfile.py" \
+            && grep -qF 'requires-python = ">=3.12"' "$TEST_DIR/$layout/pyproject.toml"; then
+            echo "      ok    $layout derives $expected from >=3.12" >&3
+        else
+            echo "      fail  $layout does not derive $expected from >=3.12" >&3
+            failures=$((failures + 1))
+        fi
+    done
     [ "$failures" -eq 0 ]
 }
