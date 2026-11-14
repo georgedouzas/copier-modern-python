@@ -11,15 +11,31 @@ _skip_if_exists:
 project_description:
   type: str
   help: Your project description
+  validator: >-
+    {%- if not project_description | trim -%}
+    This answer cannot be empty
+    {%- elif '\n' in project_description or '\\' in project_description or '"""' in project_description -%}
+    Use a single line without a backslash or three double quotes in a row
+    {%- endif -%}
 
 # Author
 author_fullname:
   type: str
   help: Your full name
+  validator: >-
+    {%- if not author_fullname | trim -%}
+    This answer cannot be empty
+    {%- elif '\n' in author_fullname or '\\' in author_fullname or '"""' in author_fullname -%}
+    Use a single line without a backslash or three double quotes in a row
+    {%- endif -%}
 
 author_email:
   type: str
   help: Your email
+  validator: >-
+    {%- if not author_email | regex_search('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$') -%}
+    Use an email address, for example `name@example.com`
+    {%- endif -%}
 
 # Git hosting
 git_provider:
@@ -142,11 +158,24 @@ python_package_distribution_name:
   help: Your Python package distribution name (for `pip install NAME`)
   when: "{{ publish_pypi }}"
   default: "{{ repository_name|lower|replace('-', '_')|replace(' ', '_') }}"
+  validator: >-
+    {%- if not python_package_distribution_name | regex_search('^[A-Za-z0-9]([A-Za-z0-9._-]*[A-Za-z0-9])?$') -%}
+    Use letters, digits, `.`, `_` and `-`, starting and ending with a letter or digit
+    {%- endif -%}
 
 python_package_import_name:
   type: str
   help: Your Python package import name (for `import NAME` in Python code)
   default: "{{ repository_name|lower|replace('-', '_')|replace(' ', '_') }}"
+  validator: >-
+    {%- set keywords = ['and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del',
+    'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda',
+    'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'] -%}
+    {%- if not python_package_import_name | regex_search('^[a-z_][a-z0-9_]*$')
+    or python_package_import_name in keywords -%}
+    Use a valid Python identifier in lowercase (letters, digits and `_`, not starting with a digit) that
+    is not a Python keyword
+    {%- endif -%}
 
 # Legal
 copyright_license:
@@ -193,11 +222,21 @@ copyright_holder:
   type: str
   help: Person or organization holding the copyright (often the company that owns the repository, not the author)
   default: "{{ author_fullname }}"
+  validator: >-
+    {%- if not copyright_holder | trim -%}
+    This answer cannot be empty
+    {%- elif '\n' in copyright_holder or '\\' in copyright_holder or '"""' in copyright_holder -%}
+    Use a single line without a backslash or three double quotes in a row
+    {%- endif -%}
 
 copyright_holder_email:
   type: str
   help: The email of the person/entity holding the copyright
   default: "{{ author_email }}"
+  validator: >-
+    {%- if not copyright_holder_email | regex_search('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$') -%}
+    Use an email address, for example `name@example.com`
+    {%- endif -%}
 
 copyright_date:
   type: str
