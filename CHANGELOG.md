@@ -6,6 +6,29 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.1.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.1.0) - 2026-11-14
+
+<small>[Compare with 2.0.2](https://github.com/georgedouzas/copier-modern-python/compare/2.0.2...2.1.0)</small>
+
+### Features
+
+- Remove the virtual environment in the clean session ([a47fc16](https://github.com/georgedouzas/copier-modern-python/commit/a47fc161894082dd5b66feb38736614f642f94b7) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Bug Fixes
+
+- Install uv wherever a PDM project builds ([7d90c8f](https://github.com/georgedouzas/copier-modern-python/commit/7d90c8f79662428c1347c4b52dc9bf311ce35064) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Install with uv through PDM and keep pdm.lock as the only lock file ([9d22f02](https://github.com/georgedouzas/copier-modern-python/commit/9d22f02e970f5f42ed5f5c6b58a3624d7cc46a5f) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Remove community files from generated projects ([d4d0813](https://github.com/georgedouzas/copier-modern-python/commit/d4d0813719e47cf1b874fc3b99a77bbab5b1a848) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Docs
+
+- Tell PDM users that uv must be installed too ([3ffbee0](https://github.com/georgedouzas/copier-modern-python/commit/3ffbee0b106aa7f18d5b848fd5339770ccffa04f) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Tests
+
+- Check that a generated PDM project has no uv lock file ([9212299](https://github.com/georgedouzas/copier-modern-python/commit/92122998005995251f357cc51edfa16362fc9f46) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Regenerate the fixtures for PDM's uv installer ([c9b2b42](https://github.com/georgedouzas/copier-modern-python/commit/c9b2b42f938194dd8ab03fdb302b6a6edd69b475) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.0.2](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.2) - 2026-10-11
 
 <small>[Compare with 2.0.1](https://github.com/georgedouzas/copier-modern-python/compare/2.0.1...2.0.2)</small>
@@ -13,6 +36,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Bug Fixes
 
 - Make the generated docs API script run on Python 3.14 ([0844b92](https://github.com/georgedouzas/copier-modern-python/commit/0844b925199d1f3a9d345a6a7c024a7e29f9f697) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Docs
+
+- Update changelog for version 2.0.2 ([46bc183](https://github.com/georgedouzas/copier-modern-python/commit/46bc1835e256f94f6a08cb290da61c071a2fa2b3) by georgedouzas).
 
 ## [2.0.1](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.0.1) - 2026-10-06
 
