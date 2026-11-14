@@ -48,7 +48,7 @@ def clean(session: nox.Session) -> None:
     Arguments:
         session: The nox session.
     """
-    paths = [
+    dir_paths = [
         '.mypy_cache',
         '.pytest_cache',
         'tests/.pytest_cache',
@@ -62,18 +62,16 @@ def clean(session: nox.Session) -> None:
         '.nox',
         '.venv',
         '.ruff_cache',
-        'coverage.xml',
     ]
-    for path in paths:
-        shutil.rmtree(path, ignore_errors=True)
+    file_patterns = ['*.rej', '.coverage*', 'coverage.xml']
+    for dir_path in dir_paths:
+        shutil.rmtree(dir_path, ignore_errors=True)
     for cache_path in Path().rglob('__pycache__'):
         shutil.rmtree(cache_path, ignore_errors=True)
-    for file in Path().rglob('*.rej'):
-        if file.exists():
-            file.unlink()
-    for file in Path().rglob('.coverage*'):
-        if file.exists():
-            file.unlink()
+    for file_pattern in file_patterns:
+        for file_path in Path().rglob(file_pattern):
+            if file_path.exists():
+                file_path.unlink()
 
 
 @nox.session
