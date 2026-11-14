@@ -1,6 +1,7 @@
 """Development tasks."""
 
 import shutil
+import sys
 import tomllib
 from pathlib import Path
 from typing import Any
@@ -65,6 +66,12 @@ def clean(session: nox.Session) -> None:
         '.ruff_cache',
     ]
     file_patterns = ['*.rej', '.coverage*', 'coverage.xml']
+    if sys.platform == 'win32' and Path(sys.prefix).resolve().is_relative_to(Path('.venv').resolve()):
+        dir_paths.remove('.venv')
+        session.warn(
+            'Kept .venv, since Windows cannot delete the environment this task runs from. Remove it after the '
+            'task exits, with `Remove-Item -Recurse -Force .venv` in PowerShell or `rmdir /s /q .venv` in cmd.',
+        )
     for dir_path in dir_paths:
         shutil.rmtree(dir_path, ignore_errors=True)
     for cache_path in Path().rglob('__pycache__'):
