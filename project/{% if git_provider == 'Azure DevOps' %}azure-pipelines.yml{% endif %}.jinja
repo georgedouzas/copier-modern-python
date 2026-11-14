@@ -124,7 +124,7 @@ stages:
     - script: |
         python -m pip install --upgrade pip
         {%- if package_manager == "PDM" %}
-        pip install pdm twine
+        pip install pdm uv twine
         {%- else %}
         pip install uv twine
         {%- endif %}

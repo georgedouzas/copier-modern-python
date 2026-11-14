@@ -85,7 +85,7 @@ pipelines:
           caches:
             - pip
           script:
-            - pip install pdm twine
+            - pip install pdm uv twine
             - pdm build
             - twine upload --skip-existing dist/*
           trigger: manual

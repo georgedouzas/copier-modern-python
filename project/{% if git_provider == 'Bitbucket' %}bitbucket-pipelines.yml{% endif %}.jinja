@@ -129,7 +129,7 @@ pipelines:
             - pip
           script:
             {%- if package_manager == "PDM" %}
-            - pip install pdm twine
+            - pip install pdm uv twine
             - pdm build
             {%- else %}
             - pip install uv twine
