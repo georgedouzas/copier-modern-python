@@ -6,6 +6,39 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 <!-- insertion marker -->
+## [2.3.0](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.3.0) - 2026-11-15
+
+<small>[Compare with 2.2.1](https://github.com/georgedouzas/copier-modern-python/compare/2.2.1...2.3.0)</small>
+
+### Features
+
+- Support Python 3.15 where the layout allows it ([be15536](https://github.com/georgedouzas/copier-modern-python/commit/be1553693743a73f943f6c6afcba8a3c0f97ed61) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Bug Fixes
+
+- Start generated projects on current commit hooks and keep them current ([8d9f00e](https://github.com/georgedouzas/copier-modern-python/commit/8d9f00efd8a3478b5d3850f29f17ba1a8f4869d2) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- End the answers file with a single newline ([1964544](https://github.com/georgedouzas/copier-modern-python/commit/1964544d1a9ec91040db897ed1670c45ecd22141) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Keep .venv in the clean session on Windows when running from it ([0952680](https://github.com/georgedouzas/copier-modern-python/commit/0952680f8f3925b21dc0473ccdabdb02958224b4) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- End the package docstring with punctuation ([37ed018](https://github.com/georgedouzas/copier-modern-python/commit/37ed01800f21da85395d366766e11662cc8b307b) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Escape answers written inside quoted strings ([a24a191](https://github.com/georgedouzas/copier-modern-python/commit/a24a191b20f8bae2630b3894300e96a74e054292) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Validate package names, emails and free text answers ([5584ac7](https://github.com/georgedouzas/copier-modern-python/commit/5584ac72dbedb424ac5a50b0bc655d549c5f0ddc) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Delete coverage.xml in the clean session ([be597a1](https://github.com/georgedouzas/copier-modern-python/commit/be597a13807549663694d176e0d5ea86716a01ad) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Docs
+
+- Archive the harden-answers-and-tooling change ([40d479f](https://github.com/georgedouzas/copier-modern-python/commit/40d479ff4d227d8380d6042b118afdceee370875) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Tests
+
+- Check that every pinned action version exists ([1f491e2](https://github.com/georgedouzas/copier-modern-python/commit/1f491e29325dd8eec4524c70c5232dcfce01e1e8) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Check the clean session on Windows ([46a8334](https://github.com/georgedouzas/copier-modern-python/commit/46a833414d978d45248e317ece3593d67a4b2b86) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Generate a project from unusual answers ([2037b93](https://github.com/georgedouzas/copier-modern-python/commit/2037b93c2737f12737de55593f3bb0bd6782de99) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+- Check that every TOML and Python file in the fixtures parses ([ece0c7f](https://github.com/georgedouzas/copier-modern-python/commit/ece0c7fc77016dee802139417016e3bcca497b0f) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Chore
+
+- Use the ruff-check hook id ([b6e72d9](https://github.com/georgedouzas/copier-modern-python/commit/b6e72d98d14d76ec5ceb5ee939a9bcf38b99aafa) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.2.1](https://github.com/georgedouzas/copier-modern-python/releases/tag/2.2.1) - 2026-11-14
 
 <small>[Compare with 2.2.0](https://github.com/georgedouzas/copier-modern-python/compare/2.2.0...2.2.1)</small>
@@ -13,6 +46,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Bug Fixes
 
 - Pin setup-uv to a release that exists ([3832226](https://github.com/georgedouzas/copier-modern-python/commit/38322265646e8454f494be39c685d962ab8c8a62) by georgedouzas). Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### Docs
+
+- Update changelog for version 2.2.1 ([dd42e11](https://github.com/georgedouzas/copier-modern-python/commit/dd42e117db6031f5b80a9f93eccc77bb9e638c18) by georgedouzas).
 
 ### Chore
 
