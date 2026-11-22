@@ -25,7 +25,7 @@ jobs:
         python-version: '3.13'
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10.3.3
+      uses: astral-sh/setup-uv@v10.4.0
 
     - name: Install the development tools and bats
       run: |
@@ -60,7 +60,7 @@ jobs:
           3.15
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10.3.3
+      uses: astral-sh/setup-uv@v10.4.0
       with:
         enable-cache: true
 
@@ -98,7 +98,7 @@ jobs:
         python-version: '3.13'
 
     - name: Set up uv
-      uses: astral-sh/setup-uv@v10.3.3
+      uses: astral-sh/setup-uv@v10.4.0
 
     - name: Install the development tools
       run: |
